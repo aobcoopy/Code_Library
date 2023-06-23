@@ -1,0 +1,5 @@
+fn.app.spl_items.sel = function(me)
+	{
+		$(me).select();
+		//alert(11);
+	}

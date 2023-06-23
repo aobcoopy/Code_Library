@@ -1,0 +1,30 @@
+$prop_villa = array();
+
+$ar_prop = array(
+				'id' => $proper['id'],
+				'price' => $proper['price'],
+				'bedroom' => $proper['bedroom']
+			);
+			$ar_propcate[] = $ar_prop;
+--------------------------------------------------------------------------------------
+foreach ($ar_propcate as $key => $vv) 
+		{
+			$volume_id[$key]  = $vv['id'];
+			$volume_price[$key]  = $vv['price'];
+			$volume_bed[$key]  = $vv['bedroom'];
+		}
+--------------------------------------------------------------------------------------
+if($ex[0]=='bedroom')
+		{
+			//$exx = explode("|",$prop_bed);
+			$prop_villa = $ar_propcate;
+			if($ex[1]=='asc')
+			{
+				array_multisort($volume_bed, SORT_ASC,$prop_villa);
+			}
+			else
+			{
+				array_multisort($volume_bed, SORT_DESC,$prop_villa);
+			}
+			
+		}

@@ -1,0 +1,47 @@
+		$aMonth = array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December');
+		$y = substr($prod['created'],0,4);
+		$m = substr($prod['created'],5,2);
+		$d = substr($prod['created'],8,2);
+		echo $d.' / ';
+		switch($m)
+		{
+			case'01': echo 'Jan';break;
+			case'02': echo 'Feb';break;
+			case'03': echo 'Mar';break;
+			case'04': echo 'Apr';break;
+			case'05': echo 'May';break;
+			case'06': echo 'Jun';break;
+			case'07': echo 'Jul';break;
+			case'08': echo 'Aug';break;
+			case'09': echo 'Sep';break;
+			case'10': echo 'Oct';break;
+			case'11': echo 'Nov';break;
+			case'12': echo 'Dec';break;
+		}
+		echo ' / '.$y;
+
+
+
+case'01': echo '?.?.';break;
+																case'02': echo '?.?.';break;
+																case'03': echo '??.?.';break;
+																case'04': echo '??.?.';break;
+																case'05': echo '?.?.';break;
+																case'06': echo '??.?.';break;
+																case'07': echo '?.?.';break;
+	case'01': $mm =  'ม.ค.';break;
+					case'02': $mm =  'ก.พ.';break;
+					case'03': $mm =  'มี.ค.';break;
+					case'04': $mm =  'เม.ย.';break;
+					case'05': $mm =  'พ.ค.';break;
+					case'06': $mm =  'มิ.ย.';break;
+					case'07': $mm =  'ก.ค.';break;
+					case'08': $mm =  'ส.ค.';break;
+					case'09': $mm =  'ก.ย.';break;
+					case'10': $mm =  'ต.ค.';break;
+					case'11': $mm =  'พ.ย.';break;
+					case'12': $mm =  'ธ.ค.';break;															case'08': echo '?.?.';break;
+																case'09': echo '?.?.';break;
+																case'10': echo '?.?';break;
+																case'11': echo '?.?.';break;
+																case'12': echo '?.?.';break;

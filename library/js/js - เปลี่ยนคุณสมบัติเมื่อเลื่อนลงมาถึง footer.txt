@@ -1,0 +1,23 @@
+$(window).scroll(function () {
+		
+		var footer = $("#footer").offset().top;//หาความสูงของ footer จาก top
+		
+		ftop = footer.top;
+		foohight = ($('#footer').height()/2);
+		slideH = $('.side_menu').height();
+		
+		if($(this).scrollTop() > (ftop-($('.side_menu').height()+foohight)))//+332
+		{
+			$(".side_menu").css({"position":"absolute","background":"#FFF","top":"100%","margin-top":"-"+slideH+"px"});
+		}
+		else
+		{
+			$(".side_menu").css({"position":"fixed","background":"#FFF","top":"","margin-top":""});
+		}
+		console.log((ftop-(502+342)));
+	});
+
+(ftop-(502+342))
+ความสูงของfooter-ความสูงของวัตถุที่ต้องการให้มันทำงาน+ความสูงของfooter
+foohight = ($('#footer').height()/2);
+(ftop-($('.side_menu').height()+foohight)))

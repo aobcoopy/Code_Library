@@ -1,0 +1,60 @@
+fn.app.invoice.invoice.copylink = function(id) {
+		
+		var temp ='https://www.inspiringvillas.com/?page=step1&id='+id;
+		$("#link").val(temp);
+		$("#link").select();
+		document.execCommand("copy");
+		temp.remove();
+	};
+
+
+
+
+--------------------ok below
+
+
+<center>
+<p id="p1">Hello, I'm TEXT 1</p>
+<p id="p2">Hi, I'm the 2nd TEXT</p><br/>
+
+<button onclick="copyToClipboard('#p1')">Copy TEXT 1</button>
+<button onclick="copyToClipboard('#p2')">Copy TEXT 2</button>
+  
+<br/><br/><input class="textBox" type="text" id="" placeholder="Dont belive me?..TEST it here..;)" />
+</center>
+
+<script>
+function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
+</script>-----------------------------
+<button id="demo" onclick="copyToClipboard(document.getElementById('demo').innerHTML)">This is what I want to copy</button>
+
+<script>
+  function copyToClipboard(text) {
+    window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+  }
+</script>
+
+--------------------ok below
+
+<script>
+function copyToClipboard(element) {
+ 
+  document.execCommand("copy");
+ 
+}
+
+
+
+function copy_link()
+{
+	$(".tx_b_no").select();
+	document.execCommand("copy");
+}
+</script>

@@ -1,0 +1,7 @@
+var Email=/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/
+				if(!document.getElementById("txemail").value.match(Email))
+				{
+				   alert('รูปแบบของ Email ไม่ถูกต้อง');
+				   document.getElementById("txemail").focus();
+				   return false;
+				}

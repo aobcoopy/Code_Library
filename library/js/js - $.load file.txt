@@ -1,0 +1,6 @@
+$("#histo").load("xhr/action-loadHist.php",{
+				idcus: $("#txtID").val()
+				},
+			function(result){
+				$("#histo").html(resulted);
+				});

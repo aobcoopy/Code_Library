@@ -1,0 +1,4 @@
+
+"stateSave": true,
+
+$().Datatable().ajax.reload(null,false);

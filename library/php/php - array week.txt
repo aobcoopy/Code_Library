@@ -1,0 +1,2 @@
+$aWeek=array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
+		echo '<option value="'.$sbp_row['id'].'">----'.$aWeek[$tt['week']].'</option>';

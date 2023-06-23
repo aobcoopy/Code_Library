@@ -1,0 +1,4 @@
+$(".main_bg").animate({opacity:'0'},500,function(){
+				$(this).css({"background":"url("+photo+")","background-position-y":" 100%","background-position-x":" 50%"});
+				$(this).animate({opacity:'1'},500);
+			});

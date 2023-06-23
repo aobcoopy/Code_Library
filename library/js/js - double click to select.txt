@@ -1,0 +1,8 @@
+
+					$("#tblStockLookup tbody").on( 'dblclick', 'tr', function () {
+						$("input[name=chk_stock]").prop("checked",false);
+						var input = $(this).find("input[name=chk_stock]");
+						input.prop("checked",true);
+						$("#dialog_lookup").parent().find(".saveButtonClass").click();
+						
+					});

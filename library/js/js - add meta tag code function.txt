@@ -1,0 +1,14 @@
+<script>
+var hash = window.location.hash;
+if(hash=='preview')
+{
+	//alert(hash);
+	var x = document.createElement("META");
+	x.setAttribute("name", "robots");
+	x.setAttribute("content", "noindex");
+	document.head.appendChild(x);
+}
+else
+{
+}
+</script>

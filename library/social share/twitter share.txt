@@ -1,0 +1,7 @@
+<!--twitter-->
+<?php $link = "http://www.film-maniac.com/?pid=3&view=article&article=".$article['id'];
+//echo '<pre>'.$link.'</pre>';?>
+<a href="#" data-url="http://www.film-maniac.com/?pid=3&view=article&article=<?php echo $_REQUEST['article'];?>" onclick="popUp=window.open('https://twitter.com/share?text=<?php echo $topitc;?>&hashtags=filmmaniac&original_referer=<?php echo $link;?>&data-url=<?php echo $link;?>&via=filmmaniac', 'popupwindow', 'scrollbars=yes,width=800,height=400');popUp.focus();return false">
+<img id="plus" src="../../upload/twitter.png" width="100" >
+</a>
+<!--twitter-->

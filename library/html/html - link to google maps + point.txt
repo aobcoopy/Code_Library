@@ -1,0 +1,1 @@
+http://maps.google.com/maps?z=18&q=10.8061,106.7130

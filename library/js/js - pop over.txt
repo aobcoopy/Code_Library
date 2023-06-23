@@ -1,0 +1,20 @@
+$(function () {
+		$.ajax({
+			type: "POST",
+			dataType:"html",
+			url: "libs/xhr/action-load-amt-cart.php",
+			success : function(html){
+				$('.carticon').popover({
+					title : "ตะกร้าสินค้า",
+					placement:"bottom",
+					trigger:"focus",
+					html : true,
+					content : ''
+						+ '<div id="divShopingList" style=" font-size:12px;" >'
+						+ html
+						+ '</div>'
+						+ '<a href="?pid=15" class="btn btn-xs btn-success">สั่งซื้อสินค้า</a>'
+			   })
+			}
+		});
+	});

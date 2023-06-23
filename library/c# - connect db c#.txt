@@ -1,0 +1,27 @@
+OleDbConnection Conn = new OleDbConnection();
+        OleDbDataAdapter D_Adap;
+        DataSet D_Set = new DataSet();
+        OleDbCommand MyCom = new OleDbCommand();
+
+
+ private void ConnectBase()
+        {
+            string strConn = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=E:\\Project 341-1\\อ.อนัญญา\\Final Project\\FN Project\\Medicine.accdb;Persist Security Info=False";
+            // ตรวจสอบว่า DataBase เปิดไหม
+            if (Conn.State == ConnectionState.Open)
+            {
+                Conn.Close();
+            }
+            else
+            {
+                Conn.ConnectionString = strConn;
+                Conn.Open();
+            }
+            //MessageBox.Show(Conn.State.ToString(),"Status");
+
+            //ดึงข้อมูลมาแสดงในตาราง
+            string DataBase = "SELECT * FROM Member";
+            D_Adap = new OleDbDataAdapter(DataBase, Conn);
+            D_Adap.Fill(D_Set, "Member");
+            MemberDGV.DataSource = D_Set.Tables["Member"];
+        }

@@ -1,0 +1,11 @@
+$province = array('Phitsanulok' => array('population' => 849692 ,'area'  => 10815 ),
+                    'Khon Kaen' => array('population' => 1767601,'area'  => 10885));
+print_r($province);
+      foreach($province as $land => $data)
+      {
+		  //echo 'ssss'.$data;
+          foreach($data as $detail => $value)
+          {
+               echo "  จังหวัด " . $land . "  มี " . $detail . "  = " . $value . "<br>";
+          }
+      }

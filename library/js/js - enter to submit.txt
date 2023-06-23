@@ -1,0 +1,16 @@
+<script type="text/javascript">
+		$(document).ready(function () 
+		{
+			$("#password,#username").keypress(function(event) {
+				if (event.which == 13) {
+					event.preventDefault();
+					$('#btn_signin').focus().click();
+					}
+				});
+
+			$('#btn_signin').click(function()
+			{
+					//function
+			});
+		});
+</script>

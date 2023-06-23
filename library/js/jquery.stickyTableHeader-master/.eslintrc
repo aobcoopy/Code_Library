@@ -1,0 +1,29 @@
+{
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true,
+    "jquery": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "vars-on-top": 0,
+    "no-plusplus": 0,
+    "func-names": 0,
+    "one-var": ["error", {"initialized": "never", "uninitialized": "always"}],
+    "one-var-declaration-per-line": 0,
+    "no-use-before-define": [2, "nofunc"],
+    "default-case": 0,
+    "import/no-extraneous-dependencies": 0
+  }
+}

@@ -1,0 +1,121 @@
+ <div id="option_area" class="otp">     
+                        Province<br>
+                        <?php $getid = $dbc->GetRecord("cities","*","country = '213'");//echo $getid['id'];?>
+                        <select id="cbbProvince" name="cbbProvince" class="form-control" >
+                        <?php
+                            $sql= "SELECT * FROM cities ";
+                            $rst = $dbc->Query($sql);
+                            while($line = $dbc->Fetch($rst)){
+                                ?><option value="<?php echo $line['id'];?>" <?php echo($line['id']==$getid['id'])?'selected':'';?>><?php echo $line['name'];?></option><?php
+                            }
+                        ?>
+                        </select><br>
+                        District<br>
+                        <select id="cbbDistrict" name="cbbDistrict" class="form-control">
+                        </select><br>
+                        <!--<input type="text" class="twide input_high" name="txprovince" id="txprovince" ><br>-->
+                        Sub District<br>
+                        <select id="cbbSubdistrict" name="cbbSubdistrict" class="form-control">
+                        </select><br>
+                 </div>       
+
+<script>
+count = '213';
+	var fnInfo = {
+		initial : function(province,district,subsitrict){//country,
+			$(document).ready(function(e) {
+				fnInfo.load_district(district,$(this).val());
+			});
+			$(province).blur(function(e) {
+				fnInfo.load_district(district,$(this).val());
+			});
+			
+			$(province).change(function(){
+				fnInfo.load_district(district,$(this).val());
+			});
+			
+			$(district).change(function(){
+				fnInfo.load_subdistrict(subsitrict,$(this).val());
+			});
+		},
+		/*load_country : function(combobox){
+			$.ajax({
+				url: "libs/store/store-country.php",
+				type: "POST",dataType: "json",
+				success: function(json){
+					$(combobox).html("");
+					for(i in json.aaData){
+						$(combobox).append('<option value="' + json.aaData[i][0] + '">' + json.aaData[i][1] + '</option>');
+					}
+					$(combobox).val(213);
+					$(combobox).change();
+				}
+			});
+		},*/
+		
+		/*load_city : function(combobox,count){
+			$.ajax({
+				url: "libs/store/store-city.php",
+				type: "POST",
+				data: {filter : "country = " + country},
+				dataType: "json",
+				success: function(json){
+					$(combobox).html("");
+					for(i in json.aaData){
+						$(combobox).append('<option value="' + json.aaData[i][0] + '">' + json.aaData[i][1] + '</option>');
+					}
+					$(combobox).change();
+				}
+			});
+		},*/
+		load_district : function(combobox,city){
+			$.ajax({
+				url: "libs/store/store-district.php",
+				type: "POST",
+				data: {filter :  city},//data: {filter : "city = " + city},
+				dataType: "html",
+				success: function(json){
+						
+					$(combobox).html("");
+					$(combobox).append(json);
+					/*for(i in json.aaData){
+						$(combobox).append('<option value="' + json.aaData[i][0] + '">' + json.aaData[i][1] + '</option>');
+					}*/
+					$(combobox).change();
+				}
+			});
+		},
+		load_subdistrict : function(combobox,district){
+			$.ajax({
+				url: "libs/store/store-subdistrict.php",
+				type: "POST",
+				data: {filter :district},
+				dataType: "html",
+				success: function(json){
+					$(combobox).html("");
+					$(combobox).append(json);
+					/*for(i in json.aaData){
+						$(combobox).append('<option value="' + json.aaData[i][0] + '">' + json.aaData[i][1] + '</option>');
+					}*/
+				}
+			});
+		}
+	}
+	
+	
+	$(function(){
+		fnInfo.initial("#cbbProvince","#cbbDistrict","#cbbSubdistrict");//"#cbbCountry",
+	});
+</script>
+
+
+-------------------------------------------------------php
+
+$output = array(
+		"aaData" => array()
+	);
+	$row = array();
+	$sql = $dbc->Query("select * from districts  where city = '".$_REQUEST['filter']."'");
+	while ( $aRow = $dbc->Fetch( $sql ) ){
+		?><option value="<?php echo $aRow['id'];?>" ><?php echo $aRow['name'];?></option><?php
+	}

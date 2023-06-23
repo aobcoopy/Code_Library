@@ -1,0 +1,5 @@
+http://maps.google.com/maps?q=13.895057,100.557773&ll=13.895057,100.557773&z=17
+
+
+
+http://maps.google.com/maps?q=13.895057,100.557773

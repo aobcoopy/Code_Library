@@ -1,0 +1,5 @@
+<style>
+	.number_format{
+		mso-number-format:Fixed;
+	}
+</style>

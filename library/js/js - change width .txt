@@ -1,0 +1,7 @@
+document.getElementById("myBtn2").style.width = "300px";
+
+<script>
+setTimeout(function(){
+	document.getElementById("ggcalendar").style.width = "100%";
+},300);
+</script>

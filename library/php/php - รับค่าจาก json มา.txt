@@ -1,0 +1,23 @@
+รับค่าจาก JSON แสดงผล
+การรับค่าจาก JSON ใช้การ decode จากนั้น for เพื่อแสดงข้อมูลออกมา 
+ 
+$url="ใส่ url ตรงนี้";
+$contents = file_get_contents($url); 
+$contents = utf8_encode($contents); 
+$results = json_decode($contents); 
+foreach ($results as $key => $value) { 
+    echo "<h2>$key</h2>";
+    foreach ($value as $k => $v) { 
+        echo "$k | $v <br />"; 
+    }
+}
+ 
+ 
+//วิธีที่ 2  ใช้ curl
+ $url="ใส่ url ตรงนี้";
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_URL, $url);
+$content = curl_exec($ch);
+curl_close($ch); 

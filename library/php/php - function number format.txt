@@ -1,0 +1,4 @@
+function numberFormat($data)
+{
+	return number_format($data,2);
+}

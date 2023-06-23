@@ -1,0 +1,57 @@
+<?php
+	session_start();
+	require_once "../../admin/config/define.php";
+	require_once "../../admin/libs/class/db.php";
+	
+	@ini_set('display_errors',DEBUG_MODE?1:0);
+	date_default_timezone_set(DEFAULT_TIMEZONE);
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	
+	$id = $_REQUEST['idpro'];
+	$price = $_REQUEST['price'];
+	//$total = $_REQUEST['total'];
+	$unit = $_REQUEST['unt'];
+	 
+	$sid = session_id();
+	$today = date('Y-m-d H:i:s');
+	
+	//check product เดิมว่ามีการซื้อเพิ่มทไหม่
+	$selected = 0;
+	foreach($_SESSION['cart']['items'] as $item){
+		if($item['idpro']==$id)
+		{
+			 $selected = $item['amount'];
+		}
+	};
+	
+	if($selected>0){
+			for($i=0;$i<count($_SESSION['cart']['items']);$i++){
+				if($_SESSION['cart']['items'][$i]['idpro']==$id){// ตรวจสอบว่าสินค้าตัวเดียวกันไหม
+					$_SESSION['cart']['items'][$i]['amount'] = $unit+$selected;
+				}
+			}
+		}else{
+			array_push($_SESSION['cart']['items'],array(
+				"idpro"=>	$id,
+				"amount" =>	$unit
+				//"price" => $total
+			));
+		}
+	
+	
+	foreach($_SESSION['cart']['items'] as $item){
+		 @$tot += $item['amount'];
+	};
+	echo json_encode(
+		array(
+			'amount' => $tot
+		)
+	);
+	
+	
+	
+	
+	$dbc->Close();
+?>

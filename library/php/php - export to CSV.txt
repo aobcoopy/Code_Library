@@ -1,0 +1,36 @@
+<?php
+
+$list = array (
+    array('aaa', 'bbb', 'ccc', 'dddd'),
+    array('123', '456', '789'),
+    array('"aaa"', '"bbb"')
+);
+
+$fp = fopen('file.csv', 'w');
+
+foreach ($list as $fields) {
+    fputcsv($fp, $fields);
+}
+
+fclose($fp);
+?>
+/////////////////////////////////////////////////
+
+
+
+OK
+$datas[] = array(
+			'name' => $row['name'],
+			'Email' => $row['email']
+		);
+header('Content-Type: text/csv; charset=UTF-8');
+header('Content-Disposition: attachment; filename=../../../binary/Member_Export.csv');
+$output = fopen('../../../binary/Member_Export.csv', 'w');
+fputs($output, $bom = ( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+// title
+fputcsv($output, array('ชื่อ','Email', 'วันที่' , 'อายุ', 'อีเมล', 'โทร', 'ขนาดห้องที่สนใจ', 'วัตถุประสงค์', 'งบประมาณ'));
+foreach ($datas as $fields) {
+    fputcsv($output, $fields);
+}
+
+fclose($output);

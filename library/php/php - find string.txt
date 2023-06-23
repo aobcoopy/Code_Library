@@ -1,0 +1,4 @@
+strstr($url_link,"/?page=forrent")////link
+
+
+strrchr($row['dname'],'Beach')////text

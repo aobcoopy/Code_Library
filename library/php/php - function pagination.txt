@@ -1,0 +1,18 @@
+<?php
+function pagination($link,$limit,$view)
+{
+	$total = $view/$limit;
+	for($i=0;$i<$total;$i++)
+	{
+		if($i==0)
+		{
+			$start = 0;
+		}
+		else
+		{
+			$start = $limit-1;
+		}
+		echo '<a href="'.$link.'&pag='.$start.'&limit='.$limit.'">'.$i.'</a>';
+	}
+}
+?>

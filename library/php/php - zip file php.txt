@@ -1,0 +1,10 @@
+$ZipName = "MyFiles/MyZip.zip";
+	require_once("../zip/dUnzip2.inc.php"); // include Class
+	$zip = new dZip($ZipName); // New Class
+	$zip->addFile("thaicreate1.txt", "thaicreate1.txt"); // Source,Destination
+	$zip->addFile("thaicreate2.txt", "thaicreate2.txt");
+	$zip->addDir("MySub"); // Add Folder
+	$zip->addFile("thaicreate3.txt", "MySub/thaicreate3.txt"); // Add file to Sub
+	$zip->addFile("thaicreate4.txt", "MySub/thaicreate4.txt");
+	$zip->save();
+	echo "Zip Successful Click <a href=$ZipName>here</a> to Download";

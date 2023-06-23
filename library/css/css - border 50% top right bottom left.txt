@@ -1,0 +1,25 @@
+<div class="c-frame-tl"></div>
+<div class="c-frame-br"></div>
+.c-frame-tl {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 0px;
+    height: 80px;
+    border-width: 2px;
+    border-style: solid none none solid (top right bottom left);
+    border-color: #fff;
+}
+
+
+
+.c-frame-br {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-width: 2px;
+    border-style: none solid solid none;
+    border-color: #fff;
+}

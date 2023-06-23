@@ -1,0 +1,5 @@
+" WHERE DATE(s.datetime) BETWEEN '".$_REQUEST['txFrom']."' AND '".$_REQUEST['txTo']."' ";
+-------------------------------------------------------------------------------------------
+WHERE DATE('updated') = 'NOW()'
+-------------------------------------------------------------------------------------------
+SELECT * FROM `noti_deposite` WHERE DATE(created) BETWEEN '2019-08-20' AND '2019-08-20'

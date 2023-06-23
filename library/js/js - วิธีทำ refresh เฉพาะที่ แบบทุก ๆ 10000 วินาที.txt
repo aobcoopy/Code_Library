@@ -1,0 +1,11 @@
+<script src="js/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+var auto_refresh = setInterval(
+function ()
+{
+	$('#----nameID-----').load('ชื่อไฟล์ .php').fadeIn("slow");
+}, 2000); // refresh every 10000 milliseconds
+</script>
+
+<div id="----nameID-----">จะแสดงข้อมูลออกมาตรงนี้ </div>

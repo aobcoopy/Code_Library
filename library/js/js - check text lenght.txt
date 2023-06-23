@@ -1,0 +1,7 @@
+var long = $(me).val();
+			if(long.length<6)
+			{
+				alert('Minimun 6 letter and/or number');
+				$(me).focus();
+				return false;
+			}

@@ -1,0 +1,10 @@
+let text = $(me).val();//"The rain in SPAIN stays mainly / in the plain";
+		//let result = text.match("/");
+		if(text.indexOf("/")>=0)
+		{
+			alert(1);
+		}
+		else
+		{
+			alert(0);
+		}

@@ -1,0 +1,89 @@
+	$email = $_REQUEST['mail'];
+	$receiver = $_REQUEST['name'];
+		$mail = new MIMEMAIL("HTML"); // ส่งแบบ HTML
+		$mail->senderName = "ESME"; // ชื่อผู้ส่ง
+		$mail->senderMail = "info@ESME.com"; // อีเมลล์ผู้ส่ง
+		$mail->bcc =  "auychai@maewnam.com".','.$email.',dubkung@gmail.com'; // ส่งแบบ bind carbon copy
+		$mail->subject = "หมายเลยคำสั่งซื้อ".$code;//substr($detailsFL,0,10)."..."; // หัวข้ออีเมลล์
+		$mail->body = "<div class=\"col-md-12\" style=\"padding:10px; background:#F9F9F9; border:1px solid #CDCDCD;width:500px\">
+						<div class=\"row \">
+							<div style='width:50%;'><img src=\"http://esme.aquawams.com//libs/image/export/subpage/logo.png\" width=\"200\" /></div>
+							<div style=\"font-size:20px;width:50%;\">หมายเลขคำสั่งซื้อ : $code</div>
+						</div>
+					
+				
+					<div class=\"col-md-12\"  style=\"border-top:0px solid #CCC;  background:; margin-top:5px; padding:10px;\">
+						<div style=\"color:#999999;font-size:16px;\">
+							เรียน คุณ :".$receiver."
+							วันที่สั่งซื้อ : ".date('Y-m-d')."
+							ขอบพระคุณมากค่ะ ที่สั่งซื้อสินค้ากับทาง ESME ค่ะ
+						</div>
+						
+						<p style=\"text-indent:35px; color:#999999; margin-left:20px;\">
+							<table border='1' cellpadding='5' cellspacing='0' class=\"table table-bordered\">
+					 	<thead>
+							<tr>
+								<th>#</th>
+								<th>Product</th>
+								<th>Price</th>
+								<th>Amt</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>";
+					$items = $_SESSION['cart']['items'];
+								$counter = 1;
+								$grand_total = 0;//	$idd = $item['idpro'];
+
+							foreach($items as $item){
+							$product = $dbc->GetRecord("products","*","id=". $item['idpro']);
+							$am = $item['amount'];
+							$mail->body.="<tr>
+									<td>$counter</td>";
+									$pr_name = explode("|",$product['name'])[0];
+							$mail->body.= "<td>$pr_name</td>";
+									if($product['promotion']=='1')
+									{
+										$price = $product['discount'];
+									}
+									else
+									{
+										$price = $product['price'];
+									}
+									$total = $price*$item['amount'];
+									$grand_total += $total;
+									//$dis = $product['pr_discount'];
+									
+									$proprice = $product['price'];
+									$mail->body.="<td>".number_format($proprice,2)."</td>
+									
+									<td>$am</td>";
+									
+							$mail->body.="<td>$total</td>";
+								$counter++;
+									}
+							$mail->body.="</tr>
+								</tbody>
+								<tfoot>
+								<tr>
+										<th colspan='4'>Total</th>
+										<th>".number_format($_REQUEST['ttp'],2)."</th>
+										</tr>
+							</tfoot>
+						</table>
+						</p>
+						
+					</div>
+					<div class=\"col-md-12\"   style=\" background:; margin-top:5px; padding:10px; color:#999999; font-size:11px;\">
+						ฝ่ายลูกค้าสัมพันธ์<br />
+						WEBSITE : <a href=\"http://http://http://esme.polardevgroup.com//\" target=\"_blank\">http://esme.aquawams.com</a><br />
+                        ติดต่อสอบถาม : info@esme.com<br>
+						โทร  : 02-444-6544 <br />
+                        มือถือ  : 088-536-3322 <br />
+                        LineID : global2001<br>
+						
+					</div>
+				</div>"; // ข้อความ หรือ HTML ก็ได้
+		$mail->attachment[] = "path_to_file1/filename1"; // ระบุตำแหน่งไฟล์ที่จะแนบ
+		$mail->create();
+		$mail->send($to); // เมลล์ผู้รับ

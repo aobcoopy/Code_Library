@@ -1,0 +1,16 @@
+<script>
+(function($)
+{
+    $(document).ready(function()
+    {
+		$("#__divname__").click(function(e) {
+			var $container = $("#content");
+			$container.load("libs/refresh-hits.php?i=<?php echo $idcustomer;?>");
+			//var refreshId = setInterval(function()
+//			{
+//				//$container.load('libs/refresh-hits.php?i=<?php echo $idcustomer;?>');
+//			}, 0);
+		});
+	  });
+})(jQuery);
+</script>

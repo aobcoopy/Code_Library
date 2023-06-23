@@ -1,0 +1,24 @@
+$li = array();
+if(isset($_REQUEST['list'] ))
+{
+	foreach($_REQUEST['list'] as $list)
+	{
+		array_push($li,"'".$list."'");
+	}
+	array_walk($li , 'intval');
+	$ids = implode(',', $li);
+	
+	// listing
+	if($_REQUEST['cbbProvince']=='all')
+	{
+		$listing_type = "WHERE listing_type IN ($ids)";
+	}
+	else
+	{
+		$listing_type = "AND listing_type IN ($ids)";
+	}
+}
+else
+{
+	$listing_type = "";
+}

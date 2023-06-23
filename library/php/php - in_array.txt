@@ -1,0 +1,22 @@
+ <?php 
+							$sql_fac = $dbc->Query("select * from icons where catgory = '1'");
+							while($fac_r = $dbc->Fetch($sql_fac))
+							{
+								$ar_fac = json_decode($properties['facilities'],true);
+								if(in_array($fac_r['id'],$ar_fac))
+								{
+									echo '<div class="col-md-4">';
+										echo '<input type="checkbox" name="chk_fac[]" value="'.$fac_r['id'].'" checked>'.$fac_r['name'];
+										echo '   &nbsp;&nbsp;&nbsp; <img src="'.json_decode($fac_r['icon'],true).'" width="50">';
+									echo '</div>';
+								}
+								else
+								{
+									echo '<div class="col-md-4">';
+										echo '<input type="checkbox" name="chk_fac[]" value="'.$fac_r['id'].'">'.$fac_r['name'];
+										echo '   &nbsp;&nbsp;&nbsp; <img src="'.json_decode($fac_r['icon'],true).'" width="50">';
+									echo '</div>';
+								}
+								
+							}
+							?>

@@ -1,0 +1,1 @@
+<img src="//graph.facebook.com/'.$_SESSION['cus']['facebookid'].'/picture" style="height:40px;">

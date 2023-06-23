@@ -1,0 +1,33 @@
+<script src="js/jquery-1.11.js"></script>
+<script>
+
+$(document).ready(function(e) {
+	$("#").click(function(e) {
+        $.post("libs/load-stockDetail.php", { 
+			data1: $("#month").val(), 
+			data2: $("#year").val()}, 
+				function(result){
+					$("#data").html(result);
+				}
+			);
+	 });
+});
+
+</script>
+
+<div id="data"></div>
+
+
+
+$(document).ready(function(e) {
+	$("id ของปุ่มที่ click").click(function(e) {
+        $.post("ไฟล์ที่อยู่ของ data.php", { 
+			data1: $("id ของ object ที่รับค่ามา").val(), 
+			
+				function(result){
+					$("id ที่เราต้องการให้ข้อมูลแสดง").html(result);
+				}
+			);
+	 });
+});
+<div id="id ที่เราต้องการให้ข้อมูลแสดง"></div>

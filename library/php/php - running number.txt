@@ -1,0 +1,10 @@
+$cus = $dbc->Query("select * from customers order by id desc limit 1");
+	$dcus = $dbc->Fetch($cus);
+$co = substr($dcus['code'],3);
+	echo '-----'.$co;
+	$r = $co+1;
+	$y = date("Y")+543;
+	$m = date("m");
+	$d = date("d");
+	$c = substr("0000".$r,-4,4);
+	$code = $y.$m.$d.$c;

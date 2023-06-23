@@ -1,0 +1,1 @@
+ <input type="number" id="tx_Bathroom" name="tx_Bathroom"  min="0" step="0.1"  class="form-control">

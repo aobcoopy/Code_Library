@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+     <head>
+        <meta charset="utf-8"/>
+        <title>Bootstrap 3 RC fixed header</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta content="" name="description"/>
+        <meta content="" name="author"/>
+        <link data-require="bootstrap-css" data-semver="3.0.0" href="bootstrap3.0.0.rc.css" rel="stylesheet"/>
+        <link href='table-fixed-header.css' rel='stylesheet' />
+        <link href="style.css" rel="stylesheet"/>
+<!--[if lt IE 9>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <button class="navbar-toggle" data-target=".nav-collapse" data-toggle="collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+<!--/.nav-collapse -->
+            </div>
+        </div>
+        <div class='container'>
+        <div class='page-header'>
+          <h1>Table Fixed Header</h1>
+          <p>From <a href="https://github.com/oma/table-fixed-header/">oma / table-fixed-header</a></p>
+        </div>  
+      <table class='table table-bordered table-fixed-header'>
+        <thead class='header'>
+          <tr>
+            <th colspan='1' rowspan='2'>
+              A title
+            </th>
+            <th colspan='1' rowspan='1'>
+              A big title
+            </th>
+            <th colspan='1' rowspan='2'>
+              Comment
+            </th>
+            <th colspan='1' rowspan='1'>
+              Sub1
+            </th>
+            <th colspan='1' rowspan='1'>
+              Sub2
+            </th>
+          </tr>
+           <tr>
+            <th colspan='1' rowspan='2'>
+              A title
+            </th>
+            <th colspan='1' rowspan='1'>
+              A big title
+            </th>
+            <th colspan='1' rowspan='2'>
+              Comment
+            </th>
+            <th colspan='1' rowspan='1'>
+              Sub1
+            </th>
+            <th colspan='1' rowspan='1'>
+              Sub2
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              Val1
+            </td>
+            <td>
+              Val2
+            </td>
+            <td>
+              Val3
+            </td>
+            <td>
+              Val4
+            </td>
+            <td>
+              Val5
+            </td>
+          </tr>
+          <tr>
+            <td colspan='1' rowspan='2'>
+              Bigval
+            </td>
+            <td>
+              Some1
+            </td>
+            <td>
+              Some1
+            </td>
+            <td>
+              Some1
+            </td>
+            <td colspan='1' rowspan='2'>
+              This is awesome
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Some2
+            </td>
+            <td>
+              Some2
+            </td>
+            <td>
+              Some2
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+        </body>
+  <!--[if lt IE 9]>
+  <script data-require="jquery" data-semver="1.9.1" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <![endif]-->
+  <!--[if gte IE 9]><!-->
+  <script data-require="jquery" data-semver="2.0.1" src="http://code.jquery.com/jquery-2.0.1.min.js"></script>
+  <!--<![endif]-->
+  <script data-require="bootstrap" data-semver="2.3.2" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script src="table-fixed-header.js"></script>
+  <script src='duplicate_rows.js'></script>
+  <script src="script.js"></script>
+</html>

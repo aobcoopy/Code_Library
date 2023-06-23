@@ -1,0 +1,3 @@
+str_replace("world","Peter","Hello world!");
+
+Hello Peter!

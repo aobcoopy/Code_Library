@@ -1,0 +1,11 @@
+var Delconf = confirm('คุณต้องการลบใช่หรือไม่ !');
+			if(Delconf==false)
+				{
+					return false;
+					
+				}
+				else
+				{
+				}		
+
+

@@ -1,0 +1,6 @@
+<script> 
+$(function(){
+  $("#includedContent_line").load("line.html"); 
+});
+</script> 
+<div id="includedContent_line"></div>

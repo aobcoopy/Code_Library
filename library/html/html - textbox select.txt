@@ -1,0 +1,8 @@
+<input list="tum" name="tum" placeholder="      เลือกตำบล" class="pad10 wt">
+                                    <datalist id="tum">
+                                    <option value="หนองแขม"></option>
+                                    <option value="หนองจอก"></option>
+                                    <option value="หนองย่าแพ"></option>
+                                    <option value="หนอนบอนไส้"></option>
+                                    <option value="หนอนชาเขียว"></option>
+                                    </datalist>

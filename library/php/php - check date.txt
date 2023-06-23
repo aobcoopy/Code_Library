@@ -1,0 +1,12 @@
+﻿//function expdate($startdate,$datenum)
+//{
+// $startdatec = strtotime($startdate); // ทำให้ข้อความเป็นวินาที
+// $tod = $datenum * 86400; // รับจำนวนวันมาคูณกับวินาทีต่อวัน
+// $ndate = $startdatec + $tod; // นับบวกไปอีกตามจำนวนวันที่รับมา
+// return $ndate; // ส่งค่ากลับ
+//}
+//$dateNow = date('Y-m-d');
+//$unit = '0';
+//echo $nn = expdate($dateNow,$unit);?>
+<?php
+//echo $nnc = date('Y-m-d',$nn);

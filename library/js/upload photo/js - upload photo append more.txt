@@ -1,0 +1,266 @@
+<script>
+$(document).ready(function(e) {
+	 $("#btn_photo").on("click",function(e){
+        $("#file_upload_prop").show().click().hide();
+        e.preventDefault();
+    });
+		
+	$("#file_upload_prop").on("change",function(e){
+
+        var files = this.files
+        showThumbnail(files)  
+		$("#multi_upload").click();  
+		$(".loaded").show();    
+		
+    });
+	function showThumbnail(files){
+
+        $("#thumbnail_prop").html("");
+        for(var i=0;i<files.length;i++){
+            var file = files[i]
+            var imageType = /image.*/
+            if(!file.type.match(imageType)){
+                //     console.log("Not an Image");
+                continue;
+            }
+
+            var image = document.createElement("img");
+            var thumbnail = document.getElementById("thumbnail_prop");
+            image.file = file;
+            thumbnail.appendChild(image)
+
+            var reader = new FileReader()
+            reader.onload = (function(aImg){
+                return function(e){
+                    aImg.src = e.target.result;
+                };
+            }(image))
+
+            var ret = reader.readAsDataURL(file);
+            var canvas = document.createElement("canvas");
+            ctx = canvas.getContext("2d");
+            image.onload= function(){
+                ctx.drawImage(image,50,50)
+            }
+        } // end for loop
+
+    } // end showThumbnail
+	
+   
+    function getDoc(frame) {
+     var doc = null;
+     
+     // IE8 cascading access check
+     try {
+         if (frame.contentWindow) {
+             doc = frame.contentWindow.document;
+         }
+     } catch(err) {
+     }
+
+     if (doc) { // successful getting content
+         return doc;
+     }
+
+     try { // simply checking may throw in ie8 under ssl or mismatched protocol
+         doc = frame.contentDocument ? frame.contentDocument : frame.document;
+     } catch(err) {
+         // last attempt
+         doc = frame.document;
+     }
+     return doc;
+ }
+
+
+
+
+	
+	$("#myFrom_prop").submit(function(e)
+	{
+				$("#multi-msg").html("<img src='loading.gif'/>");
+		
+			var formObj = $(this);
+			var formURL = formObj.attr("action");
+		
+		if(window.FormData !== undefined)  // for HTML5 browsers
+		//	if(false)
+			{
+		
+				var formData = new FormData(this);
+				$.ajax({
+					url: formURL,
+					type: 'POST',
+					data:  formData,
+					mimeType:"multipart/form-data",
+					contentType: false,
+					cache: false,
+					processData:false,
+					success: function(data, textStatus, jqXHR)
+					{
+						
+						$(".loaded").hide(0);
+						appen(data);
+						
+							/*$("#multi-msg").html('<pre><code>'+data+'</code></pre>');
+							$("#parth").val(data);*/
+							
+							//$("#thumbnail").fadeIn(100);
+							//$("#unlik").show();
+					},
+					error: function(jqXHR, textStatus, errorThrown) 
+					{
+						$("#multi-msg").html('<pre><code class="prettyprint">AJAX Request Failed<br/> textStatus='+textStatus+', errorThrown='+errorThrown+'</code></pre>');
+					} 	        
+			   });
+				e.preventDefault();
+				//e.unbind();
+						
+				
+		   }
+		   else  //for olden browsers
+			{
+				//generate a random id
+				var  iframeId = 'unique' + (new Date().getTime());
+		
+				//create an empty iframe
+				var iframe = $('<iframe src="javascript:false;" name="'+iframeId+'" />');
+		
+				//hide it
+				iframe.hide();
+		
+				//set form target to iframe
+				formObj.attr('target',iframeId);
+		
+				//Add iframe to body
+				iframe.appendTo('body');
+				iframe.load(function(e)
+				{
+					var doc = getDoc(iframe[0]);
+					var docRoot = doc.body ? doc.body : doc.documentElement;
+					var data = docRoot.innerHTML;
+					//$("#multi-msg").html('<pre><code>'+data+'</code></pre>');
+					
+				});
+			
+			}
+		
+		});
+		
+			$("#multi_upload").click(function()
+			{
+					$("#myFrom_prop").submit(function(e){ 
+						console.log(e);
+					});
+			});
+	
+	});
+
+function appen(datas)
+{
+	var pc;
+	pc+='<div class="col-md-12 nopadd" >';
+		pc+='<img  src="'+datas+'"  width="150" class="image_photo">';
+		pc+='<input type="hidden" class="form-control" value="'+datas+'" id="t_photo" name="t_photo">';
+		pc+='&nbsp; <button type="button" class="btn btn-xs btn-danger"  onClick="unlink_me(this)">Remove</button>';
+	pc+='</div>';/*
+	$(".imgf").attr('src','');*/
+	$(".my_photo").append(pc);
+}
+function unlink_me(me,data)
+{
+	var a = $(me).parent().find('input[name=t_photo]').val();
+	$.ajax({
+		url: 'libs/xhr/action-unlink-photo.php',
+		type: 'POST',
+		data:  {id:a},
+		success: function(){
+		}
+	});
+	$(me).parent().remove();
+	
+}
+</script>
+---------------------------------------html
+
+<div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">* Upload Photo</label>
+            <div class="col-sm-9">
+              <button type="button" id="btn_photo" class="b_but_normal b_active ">Browse</button><span><font color="#FF0004">000px x 000px</font></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label"></label>
+            <div class="col-sm-9">
+            <button type="button" class="loaded" ><img  src="../../upload/loading (1).gif" width="50" ></button>
+              
+              <div class="my_photo">
+              		<img id="thumbnail_prop"  width="100%" class="imgss imgf"> 
+              </div>
+            </div>
+        </div>
+
+
+<form class="form form-horizontal" id="myFrom_prop" method="post" action="libs/xhr/action-up-photo-property.php?idc=<?php echo $con_prop['id'];?>"  role="form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                <input id="file_upload_prop" style="display:none" name="upfile_prop" type="file" >
+                <button class="btn btn-primary pull-right" id="multi_upload" style="display:none;">up</button>
+            </div>
+        </div>    
+   </form>
+
+----------------------------php
+<?php
+	session_start();
+	include_once "../../admin/config/define.php";
+	include_once "../../admin/libs/class/db.php";
+	
+	@ini_set('display_errors',DEBUG_MODE?1:0);
+	date_default_timezone_set(DEFAULT_TIMEZONE);
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	//echo 'hello world';
+	
+		$save_dir = "../../upload/property/".$_REQUEST['idc'];
+		if(!file_exists($save_dir))
+		{
+			mkdir($save_dir);
+		}
+		$times = time(' H:i:s');
+		//$picName = date('Y-m-d').$times.".jpg";
+		$picName = 'photo_'.$times.".jpg";
+		$save_path = "$save_dir/$picName" ;
+		if(move_uploaded_file($_FILES["upfile_prop"]["tmp_name"],$save_dir.'/'.$picName))
+		{
+			$save_dir = "/upload/property/".$_REQUEST['idc'];
+			$location = $save_dir.'/'.$picName;
+			echo $location;
+			
+			/*$dcon = array(
+				'avatar' => $location,
+				'#updated' => 'NOW()',
+			);
+			$incon = $dbc->Update("contacts",$dcon,"id=".$_REQUEST['idc']);*/
+			
+		}
+		
+?>
+
+---------------------------- unlink
+
+<?php
+	session_start();
+	include_once "../../admin/config/define.php";
+	include_once "../../admin/libs/class/db.php";
+	
+	@ini_set('display_errors',DEBUG_MODE?1:0);
+	date_default_timezone_set(DEFAULT_TIMEZONE);
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	//echo 'hello world';
+	
+	unlink("../../".$_REQUEST['id']);
+?>

@@ -1,0 +1,40 @@
+isset($_REQUEST['pag'])?$x=$_REQUEST['pag']:$x=0;
+		$total=9;
+		$sql_num = $dbc->Query("select * from review where status > 0 ");
+		$sql = $dbc->Query("select * from review where status > 0 limit $x,$total");
+		$num = $dbc->Getnum($sql_num);
+		$total_page = $num/$total;
+
+<?php
+			if(isset($_REQUEST['pag'])){
+				if($_REQUEST['pag']==0){
+					$y = 9;
+				}
+				else{
+					if($_REQUEST['pag']==9){
+						$y = ($_REQUEST['pag']+9)-1;
+					}
+					else{
+						$y = ($_REQUEST['pag']+9);
+					}
+				}
+			}
+			else{
+				$y = 9;
+			}
+			
+			
+			if($_REQUEST['pag']==0 || $_REQUEST['pag']==8 || !isset($_REQUEST['pag'])){
+				$back = 0;
+			}
+			else{
+				$back = $_REQUEST['pag']-9;
+			}
+			
+			
+			
+			?>
+
+
+<?php /*?><a href="?pag=<?php echo $back;?>"><img src="upload/arrow-lefthover.png" width="44"></a>
+            <a href="?pag=<?php echo $y;?>"><img src="upload/arrow-righthover.png" width="44"></a><?php */?>

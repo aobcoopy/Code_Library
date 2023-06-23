@@ -1,0 +1,1 @@
+shell_exec('start %APPDATA%..\..\Local\chia-blockchain\app-1.1.5\resources\app.asar.unpacked\daemon');

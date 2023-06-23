@@ -1,0 +1,4 @@
+nl2br($_REQUEST['tx_ac']),
+
+css
+<p style="white-space:pre-warp">

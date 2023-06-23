@@ -1,0 +1,4 @@
+next
+	select * from foo where id = (select min(id) from foo where id > 4)
+	previous:
+	select * from foo where id = (select max(id) from foo where id < 4)

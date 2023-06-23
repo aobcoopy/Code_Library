@@ -1,0 +1,11 @@
+<a class="contact-us-btn mobile-only-btn my-whatsapp" href="whatsapp://send?text=Hello">WhatsApp</a>
+<a class="contact-us-btn my-fb-msgr" href="http://m.me/allyogavanda" target="_blank">Messenger</a>
+<a class="contact-us-btn my-skype-btn" href="skype:Allyogatraining?call">Skype</a>
+<a class="contact-us-btn my-email-address" href="mailto:info@allyogatraining.com">Email Us</a>
+<a class="contact-us-btn my-contact-number" href="tel:+14158710898">Call Us</a>
+
+https://www.instagram.com/aquatics_thailand/
+
+http://m.me/allyogavanda
+
+http://m.me/ชื่อเฟสเรา

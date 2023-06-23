@@ -1,0 +1,12 @@
+var Delconf = confirm('Are you sure to changes status !');
+			if(Delconf==false)
+				{
+					return false;
+					
+				}
+
+var Delconf = prompt('Are you sure to Transfer !'); //  text box on dialog
+		if(Delconf==false)
+		{
+			return false;
+		}

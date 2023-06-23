@@ -1,0 +1,189 @@
+<div role="tabpanel" class="tab-pane" id="photoss">
+                    	<div class="form-group">
+                            <label class="col-sm-2 control-label">Color</label>
+                            <div class="col-sm-10">
+                                <button type="button" class="btn btn-primary" onClick="fn.app.inventory.product.upload_photo()">Upload</button>
+                            </div>
+                        </div>
+                        <div class="thumbs">
+                            
+                        </div>
+                    </div>
+
+<form id="form_add_photo" class="hiddens">
+            <!--<input name="txtID" value="<?php echo $brand['id']?>" type="hidden">-->
+            <input id="f_Photo" name="file" type="file">
+            <button type="button" id="btn_upp" onClick="fn.app.inventory.product.upload_photo_file()">UP</button>
+        </form>
+
+
+----------------------------------- script
+<script type="text/javascript">
+var file_upload = "#f_Photo";
+
+	fn.app.inventory.product.upload_photo = function(){
+		$(file_upload).click();
+		$(file_upload).unbind();
+		
+		$(file_upload).on("change",function(e){
+			var files = this.files
+			$("#btn_upp").click();    
+		});
+	};
+	
+	fn.app.inventory.product.upload_photo_file = function(){
+		var data = new FormData($("#form_add_photo")[0]);
+		var s = '';
+		jQuery.ajax({
+			url: 'apps/inventory/xhr/action-upload-product-photo.php',
+			data: data,
+			cache: false,
+			contentType: false,
+			processData: false,
+			type: 'POST',
+			dataType: 'json',
+			success: function(response){
+				if(response.success){
+					//$(".pho").attr('src',response.path);
+					s += '<div class="col-md-12">';
+						s += '<div class="col-md-4">';
+							s += '<input type="hidden" class="paths" name="path_photo" value="'+response.path+'">';
+							s += '<input type="text" name="txt_photo[]" value="'+response.path+'">';
+							s += '<img src="'+response.path+'"  width="100%" class="img-thumbnail pho">';
+							s += '<button type="button" class="btn btn-danger" onclick="fn.app.inventory.product.remove_photo(this);">';
+								s += '<i class="fa fa-times" aria-hidden="true"></i>';
+								s += '<input type="hidden" class="paths" name="path_photo" value="'+response.path+'">';
+							s += '</button>';
+						s += '</div>';
+					s += '</div>';
+					$(".thumbs").append(s);
+					/*$("#tblbrand").DataTable().draw();
+					$("#dialog_edit_icon").modal('hide');*/
+				}else{
+					fn.engine.alert("Alert",response.msg);
+				}	
+			}
+		});
+	};
+	
+	fn.app.inventory.product.remove_photo = function(me){
+		var file_path = $(me).parent().find('.paths').val();
+		//alert(file_path);
+		$.ajax({
+			url:"apps/inventory/xhr/action-remove-product-photo.php",
+			type:"POST",
+			dataType:"json",
+			data:{path:file_path},
+			success: function(resp){
+				if(resp.status==true)
+				{
+					$(me).parent().remove();
+					fn.engine.alert("Alert",response.msg);
+				}
+				else
+				{
+					fn.engine.alert("Alert",response.msg);
+				}
+				
+			}
+		});
+	};
+</script>
+
+--------------------------------------php
+
+<?php
+	session_start();
+	include_once "../../../config/define.php";
+	include_once "../../../include/db.php";
+	include_once "../../../include/oceanos.php";
+	
+	@ini_set('display_errors',DEBUG_MODE?1:0);
+	date_default_timezone_set(DEFAULT_TIMEZONE);
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	
+	if($_FILES['file']['name']==""){
+		echo json_encode(array(
+			'success'=>false,
+			'msg' => "Please upload photo"
+		));
+	}else{
+		
+		if($dbc->HasRecord("variable","name='iProductPhoto'")){
+			$line = $dbc->GetRecord("variable","value","name='iProductPhoto'");
+			$iNumber = $line['value'];
+		}else{
+			$iNumber = 0;
+			$dbc->Insert("variable",array(
+				"#id" => "DEFAULT",
+				"name" => "iProductPhoto",
+				"value" => $iNumber,
+				"#updated" => "NOW()"
+			));
+		}
+		$iNumber++;
+		
+		$path = "img/product/$iNumber.png";
+		move_uploaded_file($_FILES['file']['tmp_name'],"../../../".$path);
+		//$dbc->Update("products",array("image" => $path),'id='.$_REQUEST['txtID']);
+		$dbc->Update("variable",array("value" => $iNumber,"#updated" => "NOW()"),"name='iProductPhoto'");
+		
+		echo json_encode(array(
+			'success'=>true,
+			'path' => $path
+		));
+	}
+	
+	
+	
+?>
+
+<?php
+	
+	$dbc->Close();
+?>
+
+
+
+-------------------------------php unlink file
+<?php
+	session_start();
+	include_once "../../../config/define.php";
+	include_once "../../../include/db.php";
+	include_once "../../../include/oceanos.php";
+	
+	@ini_set('display_errors',DEBUG_MODE?1:0);
+	date_default_timezone_set(DEFAULT_TIMEZONE);
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	
+	if(unlink('../../../'.$_POST['path']))
+	{
+		echo json_encode(
+			array(
+				'status' => true,
+				'msg' => 'ดำเนินการเรียบร้อย'
+			)
+		);
+	}
+	else
+	{
+		echo json_encode(
+			array(
+				'status' => false,
+				'msg' => 'ไม่สามารถลบไฟล์ได้ กรุณาลองใหม่อีกครั้ง'
+			)
+		);
+
+	}
+	
+	
+?>
+
+<?php
+	
+	$dbc->Close();
+?>

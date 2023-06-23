@@ -1,0 +1,6 @@
+$(document).ready(function(e) {
+ $( 'textarea.editor' ).ckeditor({
+  filebrowserBrowseUrl: 'apps/product/view/dialog_elfinder.php'
+ });
+ 
+});

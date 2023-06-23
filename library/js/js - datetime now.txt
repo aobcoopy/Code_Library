@@ -1,0 +1,100 @@
+<?php 
+function diff2time($time_a,$time_b){
+	$now_time1=strtotime(date("Y-m-d ".$time_a));
+	$now_time2=strtotime(date("Y-m-d ".$time_b));
+	$time_diff=abs($now_time2-$now_time1);
+	$time_diff_h=floor($time_diff/3600); // จำนวนชั่วโมงที่ต่างกัน
+	$time_diff_m=floor(($time_diff%3600)/60); // จำวนวนนาทีที่ต่างกัน
+	$time_diff_s=($time_diff%3600)%60; // จำนวนวินาทีที่ต่างกัน
+	return $time_diff_h." Hour ".$time_diff_m." Minute ".$time_diff_s." Secound";
+}?>
+<div class="time">
+        	<div class="clock">
+            <div id="Date"></div>
+              <ul id="clo">
+                  <li id="hours"></li>
+                  <li id="point">:</li>
+                  <li id="min"></li>
+                  <li id="point">:</li>
+                  <li id="sec"></li>
+              </ul>
+            </div>
+        </div>
+<style>
+.clock {
+    /*width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    border: 1px solid #333;
+    color: #fff;
+	background:#202020;*/
+	margin-top:10px;
+}
+
+#Date {
+    font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    /*text-shadow: 0 0 5px #00c6ff;*/
+}
+ul#clo {
+   
+    margin: 0 auto;
+    padding: 0px;
+    list-style: none;
+    text-align: center;
+	
+}
+
+ul#clo li {
+    display: inline;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif;
+    /*text-shadow: 0 0 5px #00c6ff;*/
+	
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+// Create two variable with the names of the months and days in an array
+//var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+var monthNames = [ "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" ]; 
+//var dayNames= ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+var dayNames= ["อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์"]
+
+// Create a newDate() object
+var newDate = new Date();
+// Extract the current date from Date object
+newDate.setDate(newDate.getDate());
+
+var yae =0;// change 2016 to 2559
+yae = newDate.getFullYear()+parseInt(543);
+$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + yae);
+
+
+// Output the day, date, month and year   
+$('#Date').html(dayNames[newDate.getDay()] + " " + newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
+
+setInterval( function() {
+	// Create a newDate() object and extract the seconds of the current time on the visitor's
+	var seconds = new Date().getSeconds();
+	// Add a leading zero to seconds value
+	$("#sec").html(( seconds < 10 ? "0" : "" ) + seconds);
+	},1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the minutes of the current time on the visitor's
+	var minutes = new Date().getMinutes();
+	// Add a leading zero to the minutes value
+	$("#min").html(( minutes < 10 ? "0" : "" ) + minutes);
+    },1000);
+	
+setInterval( function() {
+	// Create a newDate() object and extract the hours of the current time on the visitor's
+	var hours = new Date().getHours();
+	// Add a leading zero to the hours value
+	$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
+    }, 1000);	
+});
+</script>

@@ -1,0 +1,25 @@
+<div id="ชื่อ">
+print print print print print print print print print
+print print print print print print print print print
+</div>
+--------------------------------
+<script type="text/javascript">
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+<style>
+ body
+   {
+        -webkit-print-color-adjust:exact;
+   }
+</style>
+-------------------------ทำให้สีออกมาด้วย
+-----------------------------------
+<input type="button" value="ปริ้นเฉพาะใน divprint" onclick="printDiv("ชื่อ")">

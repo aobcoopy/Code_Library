@@ -1,0 +1,15 @@
+﻿$id_cate = array();
+		foreach($category as $cate)
+		{
+			array_push($id_cate,$cate);
+		}
+		array_walk($id_cate , 'intval');
+		$problem_cate = implode(',', $id_cate);
+	
+	
+	
+	
+	
+	
+	
+		$pro_cate = $dbc->Query("SELECT * FROM problem_category WHERE id IN ($problem_cate) ");

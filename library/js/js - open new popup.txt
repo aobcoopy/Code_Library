@@ -1,0 +1,5 @@
+function prin(id)
+{
+window.open.location = '?page=invoice';
+window.open("libs/invoice.php?id="+id,"windowName", "width=660,height=850,scrollbars=no");
+}

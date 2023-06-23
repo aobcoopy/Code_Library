@@ -1,0 +1,11 @@
+function visitto(key,posi)
+{
+        $('html,body').animate({ 
+			scrollTop: $("#"+posi+"").offset().top-200
+		}, 1000);
+}
+
+-200 คือระยะห่างจากด้านบนลงมา
+<div class="indiv col-md-12" id="key<?php echo $row2['id'];?>" onMouseOver="brinkcolormini(this,'<?php echo $row2['color_code'];?>')" onClick="visitto('key<?php echo $row2['id'];?>','posi<?php echo $row2['id'];?>')">
+        	<img src="<?php echo $row2['icon'];?>" width="40" title="<?php echo $row2['name'];?>">
+       </div><?php

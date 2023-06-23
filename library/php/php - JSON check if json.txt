@@ -1,0 +1,12 @@
+if(is_object(json_decode($aRow[$i]))) 
+				{
+					$da = json_decode($aRow[$i],true);
+					$name = $da['name'];
+					$no = $da['no'];
+					$bank = $da['bank'];
+					$row[] = $bank.'<br>'.$no.'<br>'.$name;
+				}
+				else
+				{
+					$row[] = $aRow[$i];
+				}

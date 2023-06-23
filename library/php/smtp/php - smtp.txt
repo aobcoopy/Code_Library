@@ -1,0 +1,46 @@
+/***
+	Server SMTP/POP : mail.thaicreate.com
+	Email Account : webmaster@thaicreate.com
+	Password : 123456
+	*/require_once('class.smtp.php');
+	require_once('class.phpmailer.php');
+	
+	$mail = new PHPMailer();
+	$mail->IsHTML(true);
+	$mail->CharSet = "utf-8";
+	$mail->IsSMTP();
+	$mail->SMTPAuth = true; // enable SMTP authentication
+	$mail->SMTPSecure = "ssl"; // sets the prefix to the servier
+	$mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server
+	$mail->Port = 465; // set the SMTP port for the GMAIL server
+	$mail->Username = "test@nlasset.com"; // GMAIL username
+	$mail->Password = "maewnam123456789"; // GMAIL password
+	$mail->From = "test@nlasset.com"; // "name@yourdomain.com";
+	//$mail->AddReplyTo = "support@thaicreate.com"; // Reply
+	$mail->FromName = "timehome suanluang";  // set from Name
+	$mail->Subject = "ข้อมูลลงทะเบียนจากเว็บไซต์ timehome suanluang"; 
+	$mail->Body = "ชื่อ : ".$name."<br>";
+	$mail->Body.= "เบอร์โทร : ".$phone."<br>";
+	$mail->Body.= "email : ".$email."<br>";
+	$mail->Body.= "ข้อความ : ".$message;
+
+	$mail->AddAddress("test@nlasset.com", "Mr.Adisorn Boonsong"); // to Address
+	$mail->AddAddress("aob_405@hotmail.com", "Mr.Adisorn Boonsong"); // to Address
+	$mail->AddAddress("aobcoopy@gmail.com", "Mr.Adisorn Boonsong"); // to Address
+	
+if(!$mail->Send()) {
+   // echo "Mailer Error: " . $mail->ErrorInfo;
+	echo json_encode(
+		array(
+			'status' => false,
+			'msg' => 'ไม่สามารถส่ง email ได้ค่ะ กรุณาตรวจสอบ'.$mail->ErrorInfo
+		)
+	);
+} else {
+    echo json_encode(
+		array(
+			'status' => true,
+			'msg' => 'ดำเนินการเรียบร้อบแล้วค่ะ'
+		)
+	);
+}

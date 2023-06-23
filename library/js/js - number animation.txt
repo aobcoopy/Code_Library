@@ -1,0 +1,10 @@
+//Number Animation
+	var currentVisitor = $('#userCount').text();
+	
+	$({numberValue: 0}).animate({numberValue: currentVisitor}, {
+		duration: 2500,
+		easing: 'linear',
+		step: function() { 
+			$('#userCount').text(Math.ceil(this.numberValue)); 
+		}
+	});

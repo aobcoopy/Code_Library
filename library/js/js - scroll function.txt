@@ -1,0 +1,11 @@
+$(window).scroll(function () {
+		var mybar = $(".mybar").offset().top-38;
+		if ($(this).scrollTop() > mybar) 
+		{
+			$(".mybar").css({"top":"0","position":"fixed"});
+		}
+		else
+		{
+			$(".mybar").css({"top":"","position":"relative"});
+		}
+	});

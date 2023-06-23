@@ -1,0 +1,51 @@
+$save_dir = "../../upload/bags";
+		if(!file_exists($save_dir))
+		{
+			mkdir($save_dir);
+		}
+		
+		
+		$file = $_FILES['file']['tmp_name']; 
+		
+        $folderPath = "../../upload/bags/";
+
+		$temp = explode(".", $_FILES["file"]["name"]);
+		$newfilename = round(microtime(true)) . '.' . end($temp);
+
+
+		$images = $_FILES["file"]["tmp_name"];
+		$new_images = "Thumbnails_".$newfilename;
+		/*if(copy($_FILES["file"]["tmp_name"],$folderPath.$newfilename))
+	   {*/
+	   $allowed =  array('jpg','JPG','jpeg','JPEG');
+		$filename = $_FILES['file']['name'];
+		$ext = pathinfo($filename, PATHINFO_EXTENSION);
+		if(!in_array($ext,$allowed)) 
+		{
+			echo json_encode(array(
+					'success'=>false,
+					'msg' => 'รูปภาพต้องเป็นประเภท jpg หรือ jpeg เท่านั้น'
+				));
+		}
+		else
+		{
+			$width=1280; //*** Fix Width & Heigh (Autu caculate) ***//
+			$size=GetimageSize($images);
+			$height=round($width*$size[1]/$size[0]);
+			$images_orig = ImageCreateFromJPEG($images);
+			$photoX = ImagesX($images_orig);
+			$photoY = ImagesY($images_orig);
+			$images_fin = ImageCreateTrueColor($width, $height);
+			ImageCopyResampled($images_fin, $images_orig, 0, 0, 0, 0, $width+1, $height+1, $photoX, $photoY);
+			ImageJPEG($images_fin,$folderPath.$new_images);
+			ImageDestroy($images_orig);
+			ImageDestroy($images_fin);
+			unlink($folderPath.$_FILES["file"]["name"]);
+			
+				$save_dir = "/upload/bags";
+				$location = $save_dir.'/'.$new_images;
+				echo json_encode(array(
+					'success'=>true,
+					'path' => $location
+				));
+	   }

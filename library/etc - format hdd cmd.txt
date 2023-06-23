@@ -1,0 +1,29 @@
+﻿ใส่ HDD ทั้งคู่ เพื่อให้ Computer Boot ได้
+
+เมื่อ Boot เข้า windows แล้ว มั่นใจว่า Computer มองเห็น HDD ลูกที่จะ Format.
+
+ไปที่ Command Prompt แล้วพิมพ์คำสั่งต่อไปนี้
+
+C:\>Diskpart
+
+DISKPART> List Disk
+
+แล้วเลือก DISK ที่เราต้องการ Format เช่น Disk 2 ก็พิพม์
+
+
+DISKPART>CLEAN
+
+DISKPART>Creat Partition Primary
+
+DISKPART> Select Partition 1
+
+DISKPART>Active
+
+DISKPART>Format FS=NTFS
+
+DISKPART> Assign
+
+DISKPART> Exit
+
+
+เสร็จแล้ว

@@ -1,0 +1,7 @@
+ul.a {
+    list-style-position: inside;
+}
+
+ul.b {
+    list-style-position: outside;
+}

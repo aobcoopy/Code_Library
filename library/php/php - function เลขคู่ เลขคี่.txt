@@ -1,0 +1,7 @@
+$Number = 3;
+
+	if(($Number%2) == 0){
+	echo "เลขคู่";
+	}else{
+	echo "เลขคี่";
+	}

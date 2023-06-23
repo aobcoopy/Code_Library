@@ -1,0 +1,28 @@
+session_start();
+	$id_cart = $_REQUEST['key'];
+	foreach($_SESSION['cart']['items'] as $x => $xx)
+	{
+		if($xx['idpro']==$id_cart)
+		{
+			//echo "key=" .$x .", Val= ".$xx['idpro']."<br>";
+			unset($_SESSION['cart']['items'][$x]);
+		}
+		else
+		{
+		}
+		
+	}
+	
+if(count($_SESSION['cart']['items'])==0 && count($_SESSION['cart']['package']['items'])==0 && count($_SESSION['cart']['package']['single']==0))
+{
+	unset($_SESSION['product']);
+}
+else
+{
+	
+}
+	unset($_SESSION['reward']);
+	
+//	$dbc->Close();
+	
+	

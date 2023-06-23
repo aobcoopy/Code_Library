@@ -1,0 +1,4 @@
+$qry = $dbc->Query("select * from warranty order by serial DESC limit 1");
+			 $fet = $dbc->Fetch($qry);
+			 $r = $fet['serial']+1;
+			 $code = substr("00000000".$r,-8);

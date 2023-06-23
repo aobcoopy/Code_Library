@@ -1,0 +1,225 @@
+<div class="col-md-12 nopad" style="margin-left:15px; border:1px solid #ccc;">
+	
+        <div class="panelHeading">
+            <h3 class="panel-title"><img src="/upload/icon/list.png">&nbsp;&nbsp;&nbsp;&nbsp;Apply Job</h3>
+        </div>
+        <div class="col-md-12 padd10"></div> 
+   <div class="col-md-12">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label text-right">Title : </label>
+                <div class="col-sm-10 marto5">
+                    Recruitment Consultant
+                </div>
+            </div><div class="col-md-12"></div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label text-right">Categories : </label>
+                <div class="col-sm-10 marto5">
+                    <?php echo $cate['name'];?>
+                </div>
+            </div>
+        </form>
+        <div class="col-md-12 padd10"></div> 
+        <div class="col-md-12 padd10"></div> 
+        <div class="col-md-12">
+            <div class="col-md-12"><u>Personal Information</u></div>
+        </div>
+       <form id="application" method="post"  action="libs/xhr/action-submit-application.php"  role="form" enctype="multipart/form-data"> 
+       <input type="hidden" name="txtID" value="<?php echo $id;?>">
+        <div class="col-md-12">
+            <div class="col-md-3">Name <font color="#FF0000">*</font></div>
+            <div class="col-md-8"><input  class="textbox" name="name" id="name" size="20" type="text" placeholder="Enter your name" /></div>
+            </div>
+            
+            <div class="col-md-12">
+            <div class="col-md-3">Surname <font color="#FF0000">*</font></div>
+            <div class="col-md-8"><input  class="textbox" name="surname" id="surname" size="20" type="text" placeholder="Enter your surname" /></div>
+            </div>
+            
+            <div class="col-md-12">
+            <div class="col-md-3">E-mail Address <font color="#FF0000">*</font></div>
+            <div class="col-md-8"><input  class="textbox" name="email" id="email" size="20" type="email" placeholder="Enter your e-mail" /></div>
+        </div>
+        <div class="col-md-12 padd10"></div> 
+    	<div class="col-md-12 padd10"></div> 
+        
+        <div class="col-md-12">
+        <div class="col-md-12"><u>Contact Information</u></div>
+            <div class="col-md-3">Country</div>
+                <div class="col-md-8">
+                <select id="cbbCountry" name="cbbCountry" class="selecte"></select>
+                
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="col-md-3">Province</div>
+                <div class="col-md-8">
+                <select id="cbbProvince" name="cbbProvince" class="selecte">
+                </select>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="col-md-3">District</div>
+                <div class="col-md-8">
+                <select id="cbbDistrict" name="cbbDistrict" class="selecte">
+                </select>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="col-md-3">Sub District</div>
+                <div class="col-md-8">
+                <select id="cbbSubdistrict" name="cbbSubdistrict" class="selecte">
+                </select>
+                
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="col-md-3">Telephone <font color="#FF0000">*</font></div>
+                <div class="col-md-8"><input maxlength="10" class="textbox" name="tel" id="tel" size="20" type="tel" placeholder="Enter your telephone" /></div>
+            </div>
+            
+            <div class="col-md-12">
+                <div class="col-md-3">Cell Phone <font color="#FF0000">*</font></div>
+                <div class="col-md-8">
+                    <p><input maxlength="10" name="cell" id="cell" class="textbox" size="20" type="tel" placeholder="Enter your cell phone" /></p>
+                </div>
+            <div class="col-md-12 padd10"></div> 
+            <div class="col-md-12 padd10"></div> 
+            <div class="col-md-12"><u>Qualification</u></div>
+            
+            <div class="col-md-3">Highest Qualifications <font color="#FF0000">*</font></div>
+            <div class="col-md-8">
+            <select name="degree" class="selecte">
+                <option value="Bacherlors degree" selected>Bacherlor's degree</option>
+                <option value="Master degree">Master degree</option>
+                <option value="Doctor degree">Doctor degree</option>
+            </select>
+            </div>
+            <div class="col-md-3">Upload your CV <font color="#FF0000">*</font></div>
+            <div class="col-md-8">
+            <!--<input maxlength="50" name="file" size="20" type="url" value="Choose File" />-->
+            <input type="file" name="cv" id="cv" class="upload" />
+            </div>
+           <div class="col-md-12 padd10"></div> 
+            <div class="col-md-3"></div>
+            <div class="col-md-8">
+                <a id="sents" class="hvr-bounce-in"><button  type="button" class="butt" >Submit Your application</button></a>
+            </div>
+            <div class="col-md-12 padd10"></div> 
+            </form>
+            <div class="col-md-12 padd10"></div> 
+            <div class="col-md-12 padd10"></div> 
+        </div>
+	</div>
+</div>
+<script>
+$(document).ready(function(e) 
+{
+	function getDoc(frame) 
+	{
+		 var doc = null;
+		 
+		 // IE8 cascading access check
+		 try {
+			 if (frame.contentWindow) {
+				 doc = frame.contentWindow.document;
+			 }
+		 } catch(err) {
+		 }
+	
+		 if (doc) { // successful getting content
+			 return doc;
+		 }
+	
+		 try { // simply checking may throw in ie8 under ssl or mismatched protocol
+			 doc = frame.contentDocument ? frame.contentDocument : frame.document;
+		 } catch(err) {
+			 // last attempt
+			 doc = frame.document;
+		 }
+		 return doc;
+	 }
+	 
+	$("#application").submit(function(e)
+	{
+		$("#multi-msg").html("<img src='loading.gif'/>");
+	
+		var formObj = $(this);
+		var formURL = formObj.attr("action");
+	
+		if(window.FormData !== undefined)  // for HTML5 browsers
+			{
+					var formData = new FormData(this);
+					$.ajax({
+						url: formURL,
+						type: 'POST',
+						data:  formData,
+						mimeType:"multipart/form-data",
+						contentType: false,
+						cache: false,
+						processData:false,
+						success: function(data, textStatus, jqXHR)
+						{
+								$("#multi-msg").html('<pre><code>'+data+'</code></pre>');
+						},
+						error: function(jqXHR, textStatus, errorThrown) 
+						{
+							$("#multi-msg").html('<pre><code class="prettyprint">AJAX Request Failed<br/> textStatus='+textStatus+', errorThrown='+errorThrown+'</code></pre>');
+						} 	        
+				   });
+					e.preventDefault();
+					e.unbind();
+					
+			
+		}
+		else  //for olden browsers
+		{
+			//generate a random id
+			var  iframeId = 'unique' + (new Date().getTime());
+	
+			//create an empty iframe
+			var iframe = $('<iframe src="javascript:false;" name="'+iframeId+'" />');
+	
+			//hide it
+			iframe.hide();
+	
+			//set form target to iframe
+			formObj.attr('target',iframeId);
+	
+			//Add iframe to body
+			iframe.appendTo('body');
+			iframe.load(function(e)
+			{
+				var doc = getDoc(iframe[0]);
+				var docRoot = doc.body ? doc.body : doc.documentElement;
+				var data = docRoot.innerHTML;
+				$("#multi-msg").html('<pre><code>'+data+'</code></pre>');
+			});
+		
+		}
+	
+	});
+
+	$(".butt").click(function(e) {
+        if($("#name").val()=='' ||$("#surname").val()=='' ||$("#email").val()=='' ||$("#tel").val()=='' ||$("#cell").val()=='' ||$("#cv").val()=='' )
+		{
+			alert("Please fill your data");
+			return false;
+		}
+		else
+		{
+			$("#application").after(function() {
+                alert("Email Sending.");
+				window.location.reload();
+            }).submit();
+			
+		}
+    });
+	
+	
+	
+});

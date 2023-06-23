@@ -1,0 +1,1 @@
+select * from blogs where status > 0 order by RAND() limit 3 

@@ -1,0 +1,18 @@
+$.ajax({
+							type: "POST",
+							dataType:"json",
+							url: "xhr/action-login.php",
+							data: $("#login_fm").serialize(),
+							success : function(json)
+							{
+								if(json==true)
+								{
+									alert(1);
+									//window.location.reload;
+								}else
+								{
+									alert(2);
+									return false;
+								}
+							}
+					},"json");

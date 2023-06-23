@@ -1,0 +1,3 @@
+สำหรับ hosting ที่ใช้ DirectAdmin
+http://27.254.41.171:81/~villaysara/beta/
+http://ip/~ชื่อ username ที่ใช้ login/ชื่อ folder/

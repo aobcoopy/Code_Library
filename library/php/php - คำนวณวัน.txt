@@ -1,0 +1,32 @@
+<?php 
+function expdate($startdate,$datenum)
+{
+ $startdatec = strtotime($startdate); // ทำให้ข้อความเป็นวินาที
+ $tod = $datenum * 86400; // รับจำนวนวันมาคูณกับวินาทีต่อวัน
+ $ndate = $startdatec + $tod; // นับบวกไปอีกตามจำนวนวันที่รับมา
+ return $ndate; // ส่งค่ากลับ
+}
+$dateNow = date('Y-m-d');
+$unit = time('2015-06-25');
+echo $a = strtotime($dateNow)-strtotime(date('2015-06-25'))/(60*60*24);
+echo '===='.date('Y-m-d',$a);
+$nn = expdate($dateNow,$unit);?>
+<?php
+echo $nnc = date('Y-m-d',$nn);
+
+echo "<pre>";
+
+echo "</pre>";
+?>
+
+
+
+
+
+
+
+
+หาจำนวนวัน
+$date_in = date('Y-m-d');
+	$date_out = date('2015-06-25');
+	$total_date = (strtotime($date_out)-strtotime($date_in))/ ( 60 * 60 * 24 );

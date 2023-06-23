@@ -1,0 +1,98 @@
+<div style="padding:10px; background:#F9F9F9; border:1px solid #CDCDCD;width:600px">
+    <div style=" height: 99px;border-bottom: 1px solid #ccc;">
+        <div style='width:100px; padding:15px;float:left;'><img src="http://127.0.0.1:8019/images/icons/logo.png" width="100" /></div>
+        <div style="font-size: 26px;width:450px;float:right;margin-top: 29px;font-family: sans-serif;color: #969696;text-align: right;">ใบวางบิล</div>
+    </div>
+    
+
+    <div   style="border-top:0px solid #CCC;  background:; margin-top:5px; padding:10px;">
+        <div style="color:#999999;font-size:16px;">
+           <br><br>
+           
+            <center>
+            	หมายเลขคำสั่งซื้อ  <?php echo $code;?>
+                <p class="mtop20">จำนวนเงินที่ต้องชำระ</p>
+                <p class="pink">
+                    <h2 style="color: #f284b3;"><?php echo number_format($net_price,2);?> บาท</h2>
+                </p>
+                <h3>เลือกวิธีการชำระเงินด้านล่าง</h3> ระบบจะส่งอีเมลอัตโนมัติไปยัง <?php echo $_SESSION['data']['slip']['tx_email'];?> เพื่อยืนยันการสั่งซื้อสินค้าครั้งนี้
+            </center>
+            <hr>
+            <div class="col-xs-12" style="border-bottom:1px solid #999; padding-bottom:20px;">
+                <p class="mtop20"><h3 style="color: #f284b3;">วิธีการชำระเงิน</h3></p>
+                สำหรับลูกค้าท่านที่ทำรายการสั่งซื้อสินค้าแล้ว  สามารถโอนเงินตามจำนวนที่สั่งซื้อสินค้าได้ทันที<br>
+            </div>
+           
+           
+            <div class="col-xs-12" style="border-bottom:1px solid #999; padding-bottom:20px;margin-bottom:20px;">
+                <p class="mtop20" ><h3 style="color: #f284b3;">วิธีการแจ้งชำระเงิน</h3></p>
+                1.แจ้งชำระผ่าน line โดยสามารถแอด line ได้โดยพิมพ์ ID หรือยิง QR Code ได้ที่ฝั่งซ้ายของ website (สะดวกและรวดเร็วสุด)<br>
+                2.แจ้งชำระได้ที่เบอร์ 081-111-1111  (xxx)</br>
+                3.แจ้งชำระ facebook panpage</br>
+                4.แจ้งชำระผ่านทางหน้าเว็บไซค์
+                </br> </br> <span style="font-size:12px;">***สินค้าจะจัดส่ง ภายหลังจากที่ท่านชำระเงิน และแจ้งการชำระเงินแล้วเท่านั้นค่ะ</span>
+            </div>
+            <h3 style="color: #f284b3;">ชำระผ่านช่องทางธนาคาร</h3>
+
+           <table class="table tme website">
+                <thead>
+                    <tr bgcolor="#eaeaea">
+                        <td>ธนาคาร</td>
+                        <td>เลขที่บัญชี</td>
+                        <td>สาขา</td>
+                        <td>ประเภทบัญชี</td>
+                        <td>ชื้อบัญชี</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="http://127.0.0.1:8019/images/ตรากสิกร.png" width="30" class="pi" />  กสิกรไทย</td>
+                        <td>604-2-57366-1</td>
+                        <td>เซ็นทรัลบางนา</td>
+                        <td>ออมทรัพย์</td>
+                        <td>พิษณุกรณ์   นิลสระคู</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://127.0.0.1:8019/images/ตรากรุงเทพ.png" width="30" class="pi" />  กสิกรไทย</td>
+                        <td>604-2-57366-1</td>
+                        <td>เซ็นทรัลบางนา</td>
+                        <td>ออมทรัพย์</td>
+                        <td>พิษณุกรณ์   นิลสระคู</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://127.0.0.1:8019/images/ตราไทยพาณิชย์.png" width="30" class="pi" />  กสิกรไทย</td>
+                        <td>604-2-57366-1</td>
+                        <td>เซ็นทรัลบางนา</td>
+                        <td>ออมทรัพย์</td>
+                        <td>พิษณุกรณ์   นิลสระคู</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://127.0.0.1:8019/images/ตรากรุงศรี.png" width="30" class="pi" />  กสิกรไทย</td>
+                        <td>604-2-57366-1</td>
+                        <td>เซ็นทรัลบางนา</td>
+                        <td>ออมทรัพย์</td>
+                        <td>พิษณุกรณ์   นิลสระคู</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://127.0.0.1:8019/images/ตรากรุงไทย.png" width="30" class="pi" />  กสิกรไทย</td>
+                        <td>604-2-57366-1</td>
+                        <td>เซ็นทรัลบางนา</td>
+                        <td>ออมทรัพย์</td>
+                        <td>พิษณุกรณ์   นิลสระคู</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        
+        <p style="text-indent:35px; color:#999999; margin-left:20px;">
+        </p>
+        
+    </div>
+    <div    style=" background:; margin-top:5px; padding:10px; color:#999999; font-size:11px;">
+        <b>Contact Us</b><hr />
+        WEBSITE : <a href="http://www.aaapconference.com/" target="_blank">www.aaapconference.com/</a><br />
+        Email : aaapconference@gmail.com<br>
+        
+    </div>
+</div>

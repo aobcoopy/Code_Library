@@ -1,0 +1,7 @@
+<script>
+$(document).ready(function(e) {
+    $(":input").inputmask();
+});
+</script>
+
+<input type="text" id="tx_card" name="tx_card" data-inputmask="'mask': '9999 9999 9999 9999'" class="input">

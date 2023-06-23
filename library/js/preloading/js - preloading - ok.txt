@@ -1,0 +1,95 @@
+<script src="libs/js/jquery.nPageLoader.js" type="text/javascript"></script>
+<script>
+	var pageLoader = $.nPageLoader;
+	pageLoader.init({
+		// url
+		url : "http://interlink.polardevgroup.com/libs/image/our_group/ourgroup_BG.png",
+		//  kb
+		urlSize : 28.6,
+		//  kb
+		//size : 155,
+		// console log
+		log : true
+	});
+	pageLoader.addEventListener( "progress", onProgress );
+	pageLoader.addEventListener( "complete", onComplete );
+	
+	function onProgress( e ){
+		$("#pageLoader_status").html(e.percent + "%");
+		$("#pageLoader_bar").width(e.percent + "%");
+	}
+	
+	function onComplete( e ){
+		$("#pageLoader_status").html(e.event);
+		$(".backg").addClass('slideOutUp');
+		$(".prebox").addClass('zoomOut');
+		//$("#pageLoader_bar").css("background-color","blue");
+	}
+</script>
+
+
+
+<div class="backg wow"></div>
+<div class="prebox wow" style="font-family:Quark;">
+    <div id="pageLoader_bar" style="width:0%; height:auto; overflow:hidden;">
+        <div class="clogo">
+        	<img src="libs/image/our_group/interlink_logo.png" width="100"><br>
+            <!--<div class="te">The Group of INTERLINK</div>-->
+        </div>
+    </div>
+    <center><button id="pageLoader_status"></button></center>
+</div>
+
+
+
+
+style-----------------------------------------------------------------
+.backg
+{
+	background:#2f3940;
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	z-index:2100 !important;
+}
+.prebox
+{
+	background:rgba(255, 255, 255, 0);
+	height:200px;
+	width:200px;
+	position:fixed;
+	z-index:2110 !important;
+	padding:15px;
+	left:50%;
+	top:50%;
+	margin-left:-100px;
+	margin-top:-100px;
+}
+.clogo
+{
+	background:rgba(255, 255, 255, 0);
+	padding:10px 15px;
+	color:#fff;
+}
+.clogo img
+{
+	margin-left:25px;
+}
+.clogo h2
+{
+	margin-left:10px;
+}
+#pageLoader_status
+{
+	width:100%;
+	background:none;
+	border:none;
+	font-size:22px;
+	color:#fff;
+}
+.te 
+{
+	width:100%;
+}

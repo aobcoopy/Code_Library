@@ -1,0 +1,9 @@
+$("#slides").DataTable({
+		"columnDefs": [{
+          "targets": 'no-sort',
+          "orderable": false,
+    }],
+	"language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Thai.json"
+        }
+	});

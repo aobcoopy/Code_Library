@@ -1,0 +1,6 @@
+﻿function validate() {
+  var element = document.getElementById('input-field');
+  element.value = element.value.replace(/[^a-zA-Z0-9@]+/, '');
+};
+
+ 

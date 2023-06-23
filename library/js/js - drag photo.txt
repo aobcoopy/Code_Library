@@ -1,0 +1,7 @@
+
+<script>
+  $(function() {
+	$( ".gallery" ).sortable();
+	$( ".gallery" ).disableSelection();
+  });
+</script>

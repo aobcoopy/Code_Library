@@ -1,0 +1,44 @@
+//-------------------------------OK
+function datediff ( $start, $end ) {
+
+   $datediff = strtotime(dateform($end)) - strtotime(dateform($start));
+   return floor($datediff / (60 * 60 * 24));
+}
+
+function dateform($date){
+
+   $d = explode('/',$date);
+   return $d[2].'-'.$d[1].'-'.$d[0];
+}
+
+echo datediff("22/09/2015" , "29/09/2015");  // Result = 7
+ในบางกรณี เช่น การ booking  จะต้องนับวันที่เริ่มต้นด้วย ฉะนั้นจะต้อง +1 วัน จากค่าที่ return
+echo (int)datediff("22/09/2015" , "29/09/2015")+1;
+
+
+
+//-------------------------------OK
+
+
+
+
+$datetime1 = date_create($_POST['from_date']);
+			$datetime2 = date_create($_POST['to_date']);
+			$dateinterval = date_diff($datetime1, $datetime2);
+			$total_date = $dateinterval->format('%d');
+
+
+
+
+<?php
+
+$datetime1 = date_create('2003-01-10');
+$datetime2 = date_create('2003-01-11');
+$dateinterval = date_diff($datetime1, $datetime2);
+
+echo $dateinterval->format('%R %d day');
+
+?>
+
+ผลลัพธ์
++ 1 day

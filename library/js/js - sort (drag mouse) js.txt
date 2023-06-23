@@ -1,0 +1,62 @@
+https://jqueryui.com/draggable/#sortable
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+$(function() {
+    $( ".table tbody" ).sortable({});
+	
+    //$( ".table tbody" ).disableSelection();
+  });
+
+
+
+
+
+
+-----------------save sort
+
+save_sortOrder:function(){
+			var items = [];
+			var dat=[];
+			var i=0;
+			$("#tbl tbody tr").each(function(){
+				i++;
+				dat={
+					id:$(this).attr("id"),
+					vals:i
+				},
+				items.push(dat);
+			});
+			console.log(items);
+			$.post('apps/review/xhr/action-save-sort.php',{items:items},function(response){
+				window.location = "?app=review";
+			});
+	},
+
+
+
+-----------------
+<?php
+	session_start();
+	include_once "../../../../config/define.php";
+	include_once "../../../../libs/class/db.php";
+	
+	@ini_set('display_errors',DEBUG_MODE?1:0);
+	date_default_timezone_set(DEFAULT_TIMEZONE);
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	
+	
+	
+	$json = array();
+	foreach($_REQUEST['items'] as $item){
+		//array_push($json,$item);
+		//echo $item['id'].'----'.$item['vals'].'<br>';
+		$data = array(
+			'#sort' => $item['vals']
+		);
+		$dbc->Update("slide_photo",$data,"id = '".$item['id']."'");
+	}
+?>

@@ -1,0 +1,1 @@
+json_encode($bank,JSON_UNESCAPED_UNICODE),

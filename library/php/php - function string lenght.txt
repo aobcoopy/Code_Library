@@ -1,0 +1,11 @@
+ function string_len($text,$amount)
+   {
+		if(strlen($text)>$amount)
+		{
+			return substr($text,0,$amount).'...';
+		}
+		else
+		{
+			return $text;
+		}
+   }

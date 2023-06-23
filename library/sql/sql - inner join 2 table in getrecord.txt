@@ -1,0 +1,1 @@
+$line=$dbc->GetRecord("users,groups","users.id, users.name, users.gid, groups.name,users.contact","groups.id=users.gid AND users.name='$username'");

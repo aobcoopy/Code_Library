@@ -1,0 +1,13 @@
+function eplo($value)
+					{
+						$val = explode("|",$value);
+						if(isset($val[0]))
+						{
+							return $val[0];
+						}
+						else
+						{
+							return $val[1];
+						}
+					}
+					

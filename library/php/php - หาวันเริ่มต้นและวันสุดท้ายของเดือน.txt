@@ -1,0 +1,30 @@
+<?php
+//กำหนด timezone เป็นของบ้านเรา
+date_default_timezone_set('Asia/Bangkok');
+echo "วันที่ปัจจุบัน : ".date('Y-m-d');
+echo "<hr>";
+echo "เดือนที่แล้ว";
+echo "<br>";
+echo "วันที่เริ่มต้น : " .date("Y-m-d", strtotime("first day of previous month"));
+echo "<br>";
+echo "วันที่สิ้นสุด : " .date("Y-m-d", strtotime("last day of previous month"));
+
+echo "<hr>";
+echo "เดือนปัจจุบัน";
+echo "<br>";
+echo "วันที่เริ่มต้น : " .date("Y-m-d", strtotime("first day of this month"));
+echo "<br>";
+echo "วันที่สิ้นสุด : " .date("Y-m-d", strtotime("last day of this month"));
+
+echo "<hr>";
+echo "เดือนหน้า";
+echo "<br>";
+echo "วันที่เริ่มต้น : " .date("Y-m-d", strtotime("first day of next month"));
+echo "<br>";
+echo "วันที่สิ้นสุด : " .date("Y-m-d", strtotime("last day of next month"));
+
+echo "<hr>";
+echo "เปลียนรูปแบบการแสดงผลวันที่เป็น ว/ด/ป";
+echo "<br>";
+echo "เช่น ".date("d/m/Y");
+?>

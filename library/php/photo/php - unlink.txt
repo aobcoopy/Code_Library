@@ -1,0 +1,3 @@
+$news = $dbc->GetRecord("news","*","id=".$id);
+	$link = '../../../..'.json_decode($news['photo'],true);
+	unlink($link);

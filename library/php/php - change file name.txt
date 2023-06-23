@@ -1,0 +1,20 @@
+รูปแบบการเขียน (Syntax)
+rename(oldname , newname)
+  - oldname คือ ชื่อเก่า
+  - newname คือ ชื่อใหม่
+
+<?php
+
+rename("c:\\test.txt" , "c:\\newtest.txt");
+
+?>
+
+
+
+$datas = $dbc->GetRecord("yacth","*","id=".$id);
+			$photo_old_name = json_decode($datas['photo']);
+			$ex = explode("/",$photo_old_name);
+			$photo_new_name = $ex[0].'/'.$ex[1].'/Yacth-'.trim($_REQUEST['txTitle_edit']).'.jpg';
+			rename("../../../../".$photo_old_name , "../../../../".$photo_new_name);
+			$data = array('photo' => json_encode($photo_new_name));
+			$dbc->Update("yacth",$data,"id=".$id);	

@@ -1,0 +1,39 @@
+foreach($data as $item)
+	{
+		$chk_val = $item['status'];
+		$checked = ($item['status']==1)?'checked':'';
+		echo '<tr>';
+			echo '<td class="text-center"><img height="100" src="'.$item['photo'].'"><input type="hidden" name="item[]" value="'.$item['photo'].'"></td>';
+			echo '<td>';
+				echo '<input type="text" class="tx_link" name="tx_link[]" value="'.$item['link'].'">';
+			echo '</td>';
+			echo '<td>';
+				echo '<input type="hidden" class="tx_chk" name="tx_status[]" value="'.$chk_val.'">';
+				echo '<label class="switch">';
+				  echo '<input type="checkbox" name="chk_status[]" id="chk_status" value="'.$chk_val.'" '.$checked.' onClick="checkme(this);">';
+				  echo '<span class="slider"></span>';
+				echo '</label>';
+			echo '</td>';
+			echo '<td class="text-center"><a class="btn btn-danger btn-sm" onclick="$(this).parent().parent().remove();">Remove</a></td>';
+		echo '</tr>';
+		
+		
+	}
+
+
+
+**************************************************************************
+$item = array();
+	
+	for($i=0;$i<count($_POST['item']);$i++){
+		array_push($item,array(
+			"photo" => $_POST['item'][$i],
+			"status" => isset($_POST['tx_status'][$i])?$_POST['tx_status'][$i]:'',
+			"link" => $_POST['tx_link'][$i],
+		));
+	}
+**************************************************************************
+$data = array(
+			"data" => json_encode($item,JSON_UNESCAPED_UNICODE ),
+			"#updated" => "NOW()"
+		); 

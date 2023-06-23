@@ -1,0 +1,9 @@
+$("#chk_stock").click(function(){
+						if($(this).prop('checked')){
+							$("input[name=chk_stock]").prop("checked",true);
+						}else{
+							$("input[name=chk_stock]").prop("checked",false);
+						}
+					});
+					
+					

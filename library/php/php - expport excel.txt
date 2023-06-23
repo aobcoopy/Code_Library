@@ -1,0 +1,37 @@
+<?php
+set_time_limit(0);
+header('Content-Type: text/html; charset=utf-8');
+ 
+header("Content-Type: application/vnd.ms-excel");
+header('Content-Disposition: attachment; filename="filename.xls"');#กำหนดชื่อไฟล์
+echo '<html xmlns:o="urn:schemas-microsoft-com:office:office"xmlns:x="urn:schemas-microsoft-com:office:excel"xmlns="http://www.w3.org/TR/REC-html40">';
+ 
+//ทำการดึงข้อมูลจาก Database
+//Connect DB
+$mysqli = new mysqli('localhost','username','password','db_name');
+if ($mysqli->connect_errno) {
+    die( "Failed to connect to MySQL : (" . $mysqli->connect_errno . ") " . $mysqli->connect_error);
+}
+$mysqli->set_charset("utf8");
+ 
+$query = " SELECT * FROM tbl_name ";
+$res = $mysqli->query($query);
+echo '<table style="width:100%" x:str>';
+echo '  <tr>
+            <td>Field1</td>
+            <td>Field2</td>
+            <td>Field3</td>
+            <td>Field4</td>
+            <td>Field5</td>
+        </tr>';
+while($row = $res->fetch_array()){
+    echo '<tr>
+                <td>'.$row['field1'].'</td>
+                <td>'.$row['field2'].'</td>
+                <td>'.$row['field3'].'</td>
+                <td>'.$row['field4'].'</td>
+                <td>'.$row['field5'].'</td>
+            </tr>';
+}
+echo '</table>';
+?>

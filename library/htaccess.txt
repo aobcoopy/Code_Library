@@ -1,0 +1,39 @@
+RewriteEngine On
+
+
+RewriteCond %{REQUEST_URI} !\.php
+RewriteCond %{REQUEST_URI} !\.js
+RewriteCond %{REQUEST_URI} !\.html
+RewriteCond %{REQUEST_URI} !\.css
+RewriteCond %{REQUEST_URI} !\.json
+RewriteCond %{REQUEST_URI} !\.xml
+
+^add www
+RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
+
+^redirect to https
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+
+^(ชื่อที่แสดงบน url )(.*)$ /index.php?pid=1
+RewriteRule ^(home)(.*)$ /index.php?pid=1 
+RewriteRule ^(aboutus)(.*)$ /index.php?pid=3 
+RewriteRule ^(distributor)(.*)$ /index.php?pid=4
+RewriteRule ^(order)(.*)$ /index.php?pid=5
+RewriteRule ^(event)(.*)$ /index.php?pid=6
+RewriteRule ^(contact)(.*)$ /index.php?pid=7
+
+product ต้องสร้างโฟล์เดอร์ก่อนไม่งั้นมันจะแสดงผลไม่ได้
+RewriteRule ^product/ya-kub-lom$ /index.php?pid=20&idp=1 [L]
+RewriteRule ^product/ya-capsule-samoonprai$ /index.php?pid=20&idp=2 [L]
+RewriteRule ^product/yellow-oil$ /index.php?pid=20&idp=3 [L]
+
+symptom ต้องสร้างโฟล์เดอร์ก่อนไม่งั้นมันจะแสดงผลไม่ได้
+RewriteRule ^symptom/gastritis$ /index.php?pid=10 [L]
+RewriteRule ^symptom/gerd$ /index.php?pid=11 [L]
+RewriteRule ^symptom/hemorrhoids$ /index.php?pid=12 [L]
+RewriteRule ^symptom/sinuses$ /index.php?pid=13 [L]
+RewriteRule ^symptom/migraine$ /index.php?pid=14 [L]
+RewriteRule ^symptom/monthly_period$ /index.php?pid=15 [L]

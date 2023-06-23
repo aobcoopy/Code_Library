@@ -1,0 +1,46 @@
+<div class="col-md-12 amo">
+	<button onClick="myamount(this,'minus');">-</button>
+	<input type="text" id="amt" name="amt" value="0" readonly style="width: 30px;">
+	<button onClick="myamount(this,'plus');">+</button>
+</div>
+
+<script>
+					
+                    function myamount(me,action)
+					{	
+						var val = 0;
+						var inp = 0;
+						var total  = 0;
+						if(action == 'plus')
+						{
+							total = '<?php echo $_REQUEST['va'];?>';
+							inp = $(me).parent().find('input[name=amt]').val();
+							if(inp >= total)
+							{
+								val = parseInt(inp) ;
+							}
+							else
+							{
+								val = parseInt(inp)+parseInt(1) ;
+							}
+							
+							
+							$(me).parent().find('input[name=amt]').val(val);
+						}
+						else
+						{
+							var inp = $(me).parent().find('input[name=amt]').val();
+							if(inp<=0)
+							{
+								val = parseInt(inp);
+							}
+							else
+							{
+								val = parseInt(inp) - 1;
+							}
+							
+							$(me).parent().find('input[name=amt]').val(parseInt(val));
+						}
+					}
+                    </script>
+                    

@@ -1,0 +1,32 @@
+var data = [];
+		$("#tblstockin tbody tr").each(function() {
+			data.push({
+				code : $(this).find("input[name=tx_code]").val(),
+				name : $(this).find("input[name=tx_name]").val(),
+				brand : $(this).find("input[name=tx_brand]").val(),
+				subb : $(this).find("input[name=tx_subb]").val(),
+				color : $(this).find("input[name=tx_color]").val(),
+				size : $(this).find("input[name=tx_sizer]").val(),
+				amount : $(this).find("input[name=tx_amount]").val()
+			});
+        });
+
+
+--------------------------------------------------
+var data = {
+				Name : $("#tx_name").val(),
+				Brief : $("#tx_Brief").val(),
+				Description : $("#tx_desc").val(),
+				Price : $("#tx_price").val(),
+				Discount : $("#tx_Discount").val(),
+				Point : $("#tx_Point").val(),
+				tx_size : $("#tx_size").val(),
+				tx_energy : $("#tx_energy").val(),
+				photos : []
+			};
+			
+			$("#thumbnail_photo .a_photo").each(function(index, element) {
+                data.photos.push({
+						s_photos : $(this).find("input[name=txtPhoto]").val()
+					});
+            });

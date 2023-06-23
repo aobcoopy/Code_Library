@@ -1,0 +1,3 @@
+IF(Quantity>10, 1, 2)
+
+Sum(weight_records.destination_total*IF(weight_records.destination_tax_rate > 0, weight_records.destination_tax_rate, 0)/100+weight_records.destination_total) AS SumTOT,

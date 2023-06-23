@@ -1,0 +1,78 @@
+<?php 
+	$pags = isset($_REQUEST['pag'])?$_REQUEST['pag']:'0';
+	$dbc->pagination_prev('?page=blogs',$pags,3);
+	$dbc->pagination('article','status > 0 ','?page=blogs',3,$pags);
+	$total = $dbc->GetCount("article","status > 0");
+	$dbc->pagination_next('?page=blogs',$pags,3,$total);
+
+function pagination($table,$where,$link,$limit,$pagActive)
+	{
+		global $dbc;
+		$Qry = $dbc->Query("select * from ".$table." Where $where ");
+		$nums = $dbc->Getnum($Qry);
+		
+		$total = $nums/$limit;
+		for($i=1;$i<=ceil($total);$i++)
+		{
+			if($i==1)
+			{
+				$start = 0;
+			}
+			else
+			{
+				$start += $limit;
+			}
+			$active = ($pagActive == $start)?'active':'';
+			echo '<li class="'.$active.'"><a href="'.$link.'&pag='.$start.'&limit='.$limit.'">'.$i.'</a></li>';
+			
+		}
+	}
+	
+	function pagination_prev($link,$start,$limit)
+	{
+		$prev = $start - $limit;
+		if($prev<0)
+		{
+			echo '<li class="disabled"><a href="#">&laquo;</a></li>';
+		}
+		else
+		{
+			echo '<li class="disableds"><a href="'.$link.'&pag='.$prev.'&limit='.$limit.'">&laquo;</a></li>';
+		}
+		
+	}
+	function pagination_next($link,$start,$limit,$total)
+	{
+		$next = $start + $limit;
+		if($next >= $total)
+		{
+			echo '<li class="disabled"><a href="#">&raquo;</a></li>';
+		}
+		else
+		{
+			echo '<li><a href="'.$link.'&pag='.$next.'&limit='.$limit.'">&raquo;</a></li>';
+		}
+	}
+?>
+--------------------------------------js
+<script>
+$(document).ready(function(e) {
+    $.ajax({
+		type: "POST",
+		dataType:"html",
+		url: "libs/xhr/action-load-news.php",
+		data: {pag:'<?php echo isset($_REQUEST['pag'])?$_REQUEST['pag']:'0';?>'},
+		success : function(json)
+		{
+			$(".show_blog").html(json);
+		}
+	});
+});
+</script>
+---------------------------------------php
+$started = isset($_REQUEST['pag'])?$_REQUEST['pag']:'0';
+$stoped = isset($_REQUEST['limit'])?$_REQUEST['limit']:'9';
+
+	$sql = $dbc->Query("select * from  article where status > 0 order by id desc limit ".$started.",3");
+
+

@@ -1,0 +1,1 @@
+SELECT b.*,s.* FROM branch AS b INNER JOIN sector AS s ON b.sector=s.id WHERE b.sector = '".$id."'

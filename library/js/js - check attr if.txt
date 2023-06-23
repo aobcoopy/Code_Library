@@ -1,0 +1,13 @@
+$(".panel-heading").click(function(e) {
+        if($(this).attr('aria-expanded')=='true' )//|| $(this).hasAttribute("aria-expanded")
+		{
+			alert(1);
+			$(this).children(".arr_d").children('.fa').css({"transform":"rotate(0deg)"});
+		}
+		else if($(this).attr('aria-expanded')=='false')
+		{
+			alert(0);
+			$(this).children(".arr_d").children('.fa').css({"transform":"rotate(180deg)"});
+		}
+    });
+	

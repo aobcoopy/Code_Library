@@ -1,0 +1,42 @@
+<script>
+$(function() {
+	var topme = $(window).scrollTop();
+	var pan = $("#west");
+	$(window).scroll(function () {
+			if ($(this).scrollTop() > 600) {
+				pan.css({position:"fixed",top:"0px"});
+				$("#central").css({"margin-left":"25%"});
+			} else {
+				pan.css({position:"relative",top:""});
+				$("#central").css({"margin-left":""});
+			}
+		});
+});
+</script>
+
+
+Ẻ responsive
+
+
+<script>
+$(function() {
+	var topme = $(window).scrollTop();
+	var pan = $("#west");
+	$(window).scroll(function () {
+		if($(window).width()>992)
+		{
+			if ($(this).scrollTop() > 600) {
+				pan.css({position:"fixed",top:"0px"});
+				$("#central").css({"margin-left":"25%"});
+			} else {
+				pan.css({position:"relative",top:""});
+				$("#central").css({"margin-left":""});
+			}
+		}
+		else
+		{
+		}
+			
+		});
+});
+</script>

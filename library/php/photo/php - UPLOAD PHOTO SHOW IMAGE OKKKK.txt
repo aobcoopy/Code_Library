@@ -1,0 +1,152 @@
+<form id="form_add_yacth_cover" class="form-horizontal" role="form" enctype="multipart/form-data" onsubmit="fn.app.yacth_cover.yacth_cover.add(this);return false;">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <button type="button" class="btn btn-primary" onClick="fn.app.yacth_cover.choose_photo();">Upload</button>
+                        <button type="submit" id="bt_save" class="btn btn-primary pull-right">Save</button>
+                        <font color="#ff0000"> 1920 x 600 px</font>
+                        
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input validate hidden" id="img" name="img" placeholder="img" onchange="fn.app.yacth_cover.showImg(this);">
+                            <label class="custom-file-label hidden" for="img"><?php echo $image_name; ?></label>
+                            <!--<input type="text" class="paths" id="path_photo" name="path_photo">-->
+                        </div>
+                        <div class="form-group row"><br>
+                            <div class="col-sm-6" id="preview-img">
+                            <?php echo $image; ?>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-danger " <?php echo ($path!='')?'':'disabled';?> onClick="fn.app.yacth_cover.yacth_cover.remove_cover('<?php echo $path;?>');"><i class="fa fa-remove"></i></button>
+                    </div>
+                </div>
+                
+                <div class="thumbs">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-md-10 phof">
+                        
+                        <input type="hidden" name="txt_photo" id="txt_photo" >
+                        <img src=""  width="100%" class=" phos">
+                        <!--<button type="button" class="btn btn-danger bc" style="width:100%; display:none" onclick="fn.app.yacth_cover.yacth_cover.remove_photo(this);">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </button>-->
+                    </div>
+                </div>
+                
+            </form>
+-------------------------------------------------------------
+<script style="text/javascript">
+fn.app.yacth_cover.choose_photo = function()
+{
+	$("#img").click();
+}
+
+fn.app.yacth_cover.showImg = function (input) 
+{
+    let fileName = input.files[0].name;
+    if ($.trim(fileName)) {
+        $('label[for="img"]').text(fileName);
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                var img = '<img src="' + e.target.result + '" width="100%" />';
+                
+                $('#preview-img').html(img);
+				$("#path_photo").val(fileName);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    } else {
+        $('label[for="img"]').text('Choose file');
+    }
+};
+
+fn.app.yacth_cover.yacth_cover.add = function(form){
+	var formData = new FormData($(form)[0]);
+	$.ajax({
+		url: 'apps/yacth_cover/xhr/action-edit-yacth_cover.php',
+		cache: false,
+		contentType: false,
+		processData: false,
+		type: 'POST',
+		dataType: 'json',
+		data: formData,
+		beforeSend: function () {
+		},
+		success: function (response) {
+				window.location.reload();
+			} 
+	});
+};
+
+
+fn.app.yacth_cover.yacth_cover.remove_cover = function(file_path){
+		//var file_path = $(me).val();
+		//alert(file_path);
+		$.ajax({
+			url:"apps/yacth_cover/xhr/action-remove-photo.php",
+			type:"POST",
+			dataType:"json",
+			data:{path:file_path},
+			success: function(resp){
+				if(resp.status==true)
+				{
+					fn.engine.alert("Alert",resp.msg);
+					setTimeout(function(){
+						$("#bt_save").click();
+					},1000);
+					
+				}
+				else
+				{
+					fn.engine.alert("Alert",resp.msg);
+				}
+				
+			}
+		});
+	};
+------------------------------------------------------------------
+function generatePhotoName($ext)
+{
+	$randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstvwxyzABCDEFGHIJKLMNOPQRSTVWXYZ"), 0, 20);
+	$temp_name = "Yacth-Cover-Inspiringvilla-$randomString.$ext";//$randomString.$ext";
+
+	if (file_exists("../../../../upload/yacht" . $temp_name)) {
+		generatePhotoName($ext);
+	} else {
+		return $temp_name;
+	}
+}
+	
+	
+	if (isset($_FILES['img']) && !empty($_FILES['img']['name'])) {
+		$file_ext = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
+		$new_file_name = generatePhotoName($file_ext);
+		$path = "../../../../upload/yacht/$new_file_name";
+		$showcase_path = "upload/yacht/$new_file_name";
+		if (move_uploaded_file($_FILES['img']['tmp_name'], $path)) {
+			$data['photo'] = $showcase_path;
+		} else {
+			//$data['about_us'] = 'NULL';
+		}
+	} else {
+		//$data['about_us'] = 'NULL';
+	}
+	
+		$data = array(
+			'photo' => json_encode($showcase_path)
+		);
+		
+		if($dbc->Update("yacth_cover",$data,"id=1")){
+			echo json_encode(array(
+				'success'=>true,
+				'msg'=> $id
+			));
+			
+		}else{
+			echo json_encode(array(
+				'success'=>false,
+				'msg' => "Insert Error"
+			));
+		}
+	
+	$dbc->Close();

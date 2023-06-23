@@ -1,0 +1,2 @@
+CONCAT(contacts.name,' ',contacts.surname)
+'CONCAT(contacts.name,\' \',contacts.surname)',

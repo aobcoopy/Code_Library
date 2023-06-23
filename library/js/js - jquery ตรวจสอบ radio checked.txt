@@ -1,0 +1,3 @@
+if ($('[name="radioname"]:checked').size() == 0){
+alert('no check');
+}

@@ -1,0 +1,16 @@
+<FORM action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+<input type="hidden" name="cmd" value="_ext-enter"> 
+<input type="hidden" name="redirect_cmd" value="_xclick"> 
+<input type="hidden" name="business" value="youremailaccount@mail.com" />
+<input type="hidden" name="invoice" value="หมายเลข inv" />
+<input type="hidden" name="upload" value="1"> 
+<INPUT TYPE="hidden" name="charset" value="utf-8">
+<input type="hidden" name="item_name" value="=ชื่อสินค้าหรือตะกร้า" />
+<input type="hidden" name="return" value="http://url ที่ส่งค่า return กลับมา" />
+<input type="hidden" name="cancel_return" value="http://url ที่return กลับมากรณียกเลิก" />
+<input type="hidden" name="currency_code" value="ค่าเงินเช่น EUR" />
+<input type="hidden" name="rm" value="2" />(กำหนดค่าที่จะ return กลับมาเป็น post)
+<input type="hidden" name="amount" value="ราคารวม" />
+<input type="hidden" id="" name="payer_status" value="verified">(ค่าที่จะ return กลับมา) 
+<input type="hidden" id="" name="verify_sign" value="Code_from_verisign"> (ค่าที่จะ return กลับมา) 
+<input type="hidden" id="" name="payment_status" value="Completed"> (ค่าที่จะ return กลับมา)

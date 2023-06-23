@@ -1,0 +1,203 @@
+
+<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 400px;
+		width:100%;
+      }
+@media screen and (max-width:992px)
+{
+	#legend {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 10px;
+    /*margin: 10px;*/
+	margin-top: 15px;
+    border: 3px solid #000;
+	padding-top: 0px;
+  }
+}
+@media screen and (min-width:992px)
+{
+	#legend {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 10px;
+    /*margin: 10px;*/
+    border: 1px solid #000;
+    padding-top: 0px;
+    top: 54px;
+  }
+}
+  
+</style><br><br>
+
+   <div id="map"></div>
+   <div id="legend"><h3>Legend</h3></div>
+  
+  <script>
+      var map;
+	  var lati_2 = <?php echo $room['latitude'];?>;
+	  var long_2 = <?php echo $room['longtitude'];?>;
+	  var v_name = '<?php echo $room['name'];?>';
+      function initMap() {
+		var myLatlng = {lat: lati_2, lng: long_2};
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: {lat:lati_2, lng:long_2 },
+          mapTypeId: 'roadmap'
+        });
+		
+		//--popup name
+		var contentString = 
+		'<div id="content">'+
+		  '<div id="siteNotice">'+
+		  '</div>'+
+		  
+		  '<div id="bodyContent">'+
+			  '<b>'+v_name+'</b>' +
+		  '</div>'+
+      	'</div>';
+
+	  var infowindow = new google.maps.InfoWindow({
+		content: contentString
+	  });
+	
+	  var marker = new google.maps.Marker({
+		position: myLatlng,
+		map: map,
+		title: v_name
+	  });
+	  marker.addListener('click', function() {
+		infowindow.open(map, marker);
+	  });
+	  //--popup name
+	  
+	  
+	 // Create the initial InfoWindow.
+        var infoWindow = new google.maps.InfoWindow(
+            {content: 'Click the map to get Lat/Lng!', position: myLatlng});
+        infoWindow.open(map);
+		 
+
+        // Configure the click listener.
+        map.addListener('click', function(mapsMouseEvent) {
+          // Close the current InfoWindow.
+          infoWindow.close();
+
+          // Create a new InfoWindow.
+          infoWindow = new google.maps.InfoWindow({position: mapsMouseEvent.latLng});
+          infoWindow.setContent(mapsMouseEvent.latLng.toString());
+          infoWindow.open(map);
+		  
+		  $("#tx_la").val(mapsMouseEvent.latLng);
+        });
+	  
+	  
+	  
+	  
+	  
+		//var marker = new google.maps.Marker({position: uluru, map: map});
+
+		
+		var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        var icons = {
+          
+		  parking: {
+            name: 'Parking',
+            icon: iconBase + 'parking_lot_maps.png'
+          },
+          library: {
+            name: 'Library',
+            icon: iconBase + 'library_maps.png'
+          },
+          info: {
+            name: 'Info',
+            icon: iconBase + 'info-i_maps.png'
+          }
+        };
+
+         
+
+        var features = [
+		
+          {
+            position: new google.maps.LatLng(9.493058, 100.018793),
+            type: 'library'
+          }, {
+            position: new google.maps.LatLng(9.493163, 100.017731),
+            type: 'parking'
+          }, {
+            position: new google.maps.LatLng(9.490275, 100.034768),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(9.490179, 100.035916),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(9.487407, 100.035852),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(9.487809, 100.037043),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(9.490232, 100.035927),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(9.487788, 100.041152),
+            type: 'info'
+          }, {
+            position: new google.maps.LatLng(9.488275, 100.040358),
+            type: 'info'
+          }
+        ];
+		
+		
+		/*function addMarker(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        }
+		
+        for (var i = 0, feature; feature = features[i]; i++) {
+          addMarker(feature);
+        }*/
+		
+		// Create markers.
+        features.forEach(function(feature) {
+          var marker = new google.maps.Marker({
+            position: feature.position,
+            icon: icons[feature.type].icon,
+            map: map
+          });
+        });
+
+        var legend = document.getElementById('legend');
+        for (var key in icons) {
+          var type = icons[key];
+          var name = type.name;
+          var icon = type.icon;
+          var div = document.createElement('div');
+          div.innerHTML = '<img src="' + icon + '"> ' + name;
+          legend.appendChild(div);
+        }
+		
+		if($(window).width()<976)
+		{
+		}
+		else
+		{
+			//map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('legend'));
+		}
+		//
+       // map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+      }
+	  
+	 
+	 
+    </script>
+    
+    <input type="text" id="tx_la">
+    <input type="text" id="tx_lo">

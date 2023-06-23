@@ -1,0 +1,14 @@
+https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_prop_element_offsettop
+
+<div id="test">
+  <p>Click the button to get offsetTop for the test div.</p>
+  <p><button onclick="myFunction()">Try it</button></p>
+  <p>offsetTop is: <span id="demo"></span></p>
+</div>
+
+<script>
+function myFunction() {
+  var testDiv = document.getElementById("test");
+  document.getElementById("demo").innerHTML = testDiv.offsetTop;
+}
+</script>

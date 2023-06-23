@@ -1,0 +1,5 @@
+.navicon:hover
+{
+	transform : scale(2.5);
+	-webkit-transition: all 1s cubic-bezier(0, 0.93, 1, .09); 
+}

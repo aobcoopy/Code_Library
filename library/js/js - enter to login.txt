@@ -1,0 +1,6 @@
+$("#tx_email,#tx_pass").keypress(function(event) {
+		if (event.which == 13) {
+			event.preventDefault();
+			$('#btnlogin').focus().click();
+			}
+    });

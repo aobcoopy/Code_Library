@@ -1,0 +1,3 @@
+onClick="(this.type='date')
+
+$(me).parent().parent().find("input[id=tx_date1]").prop('type','text');

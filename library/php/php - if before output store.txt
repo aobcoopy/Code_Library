@@ -1,0 +1,17 @@
+while ( $aRow = $dbc->Fetch( $rResult ) ){
+		$row = array();
+		for ( $i=0 ; $i<count($aColumns) ; $i++ ){
+
+			if($i==4){
+				$row[] = json_decode($aRow[$i],true)[0];
+			}else{
+				$row[] = $aRow[$i];
+			}
+
+			
+			if($i==0)$row["DT_RowId"] = $aRow[$i];
+			
+		}
+		$output['aaData'][] = $row;
+	}
+	

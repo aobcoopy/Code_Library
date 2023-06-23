@@ -1,0 +1,12 @@
+$("#catalog").click(function(e) {
+		if(subcat==0)
+		{
+			 $("#subcatalog").slideDown(200);
+			 subcat=1;
+		}
+		else
+		{
+			 $("#subcatalog").slideUp(200);
+			 subcat=0;
+		}
+    });

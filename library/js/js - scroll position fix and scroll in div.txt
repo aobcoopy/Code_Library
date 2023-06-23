@@ -1,0 +1,106 @@
+$('body').bind('mousewheel DOMMouseScroll', function(e) {
+	
+	
+	
+	//$(this).scrollTop(scrollTo + $(this).scrollTop());
+	if($('.c4').is(':hover')) { 
+		$("body").die();
+		//alert(111);
+		//$('.c4').scroll();
+		//alert(1);
+	}
+	else if($('.cc4').is(':hover'))
+	{
+		$("body").die();
+	}
+	else
+	{
+		var scrollTo = 0;
+		e.preventDefault();
+		if (e.type == 'mousewheel') {
+			scrollTo = (e.originalEvent.wheelDelta * -1);
+			//alert("w"+e.originalEvent.wheelDelta);
+		}
+		else if (e.type == 'DOMMouseScroll') {
+			scrollTo = 40 * e.originalEvent.detail;
+			///alert("d"+e.originalEvent.detail);
+		}
+		MouseWheelHandler(scrollTo);
+	}
+	
+	
+   
+});
+
+	
+	
+var gos=0;
+var pos = 0;
+var act1 = 1;
+function MouseWheelHandler(e)
+{
+    // cross-browser wheel delta
+    var e = window.event || e; // old IE support
+	if(e.wheelDelta ==-120)
+	{
+		
+		/*if(gos<=0)
+		{
+			gos += 1;
+		}
+		else
+		{
+			gos -= 1;
+		}*/
+		gos+=1;
+		if((gos%6)==0)
+		{
+			if(act1<=0)
+			{
+				act1 += 1;
+			}
+			else if(act1>7)
+			{
+				act1 -= 1;
+			}
+		
+			act1 += 1;
+			$(".act"+act1).click();
+			console.log('act = '+act1+' gos = '+gos);
+			return false;
+		}
+		
+	}
+	else
+	{
+		
+		/*if(gos<=0)
+		{
+			gos += 1;
+		}
+		else
+		{
+			gos -= 1;
+		}*/
+		gos -= 1;
+		if((gos%6)==0)
+		{
+			if(act1<=0)
+			{
+				act1 += 1;
+			}
+			else if(act1>7)
+			{
+				act1 -= 1;
+			}
+			
+			act1 -= 1;
+			$(".act"+act1).click();
+			console.log('act = '+act1+' ***** gos = '+gos);
+			return false;
+		}
+	}
+    var delta = e.wheelDelta;
+	
+    return false;
+}

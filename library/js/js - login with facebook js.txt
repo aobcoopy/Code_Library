@@ -1,0 +1,71 @@
+<script>
+window.fbAsyncInit = function () {
+  FB.init({
+    appId: '699381860181955',
+    status: true,
+    cookie: true,
+    xfbml: true
+  });
+};
+
+(function (doc) {
+  var js;
+  var id = 'facebook-jssdk';
+  var ref = doc.getElementsByTagName('script')[0];
+  if (doc.getElementById(id)) {
+    return;
+  }
+  js = doc.createElement('script');
+  js.id = id;
+  js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js";
+  ref.parentNode.insertBefore(js, ref);
+}(document));
+
+function Login() {
+  FB.login(function (response) {
+    if (response.authResponse) {
+		//alert(1);
+		FB.api('/me', function(response) {
+			console.log(JSON.stringify(response));
+			
+			$.ajax({
+					type: "POST",
+					dataType:"html",
+					url: "libs/xhr/action-login-facebook.php",
+					data: {
+						id : response.id,
+						txname : response.first_name,
+						txlast : response.last_name,
+						txemail : response.email,
+						gender : response.gender
+						},
+					success : function(json)
+					{
+						if(json.success==true)
+						{
+							window.location = '?pid=16';
+						}else
+						{
+							window.location = '?pid=1';
+						}
+					}
+			});
+		});
+      // some code here
+     //};
+    } else {
+      alert("Login attempt failed!");
+    }
+  }, { scope: 'email,user_photos,publish_actions' });
+
+}
+
+function logout()
+{
+	FB.logout(function(response) {
+	   console.log(response);
+	 });
+
+}
+</script>

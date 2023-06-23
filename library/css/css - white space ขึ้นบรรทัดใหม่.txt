@@ -1,0 +1,6 @@
+//----ขึ้นบรรทัดใหม่
+white-space: pre-wrap;
+
+//------ตัดข้อความ
+word-break: break-all;
+word-break: break-word;

@@ -1,0 +1,15 @@
+$("#slides").DataTable({
+		"columnDefs": [{
+          "targets": 'no-sort',
+          "orderable": false,
+    }]
+	});
+
+
+
+
+ <th class="text-center">No.</th>
+                                    <th class="text-center no-sort">Image</th>
+                                    <th class="text-center">Date Create</th>
+                                    <th class="text-center no-sort">Action</th>
+                                    <th class="text-center no-sort">Status</th>

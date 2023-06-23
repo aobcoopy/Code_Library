@@ -1,0 +1,121 @@
+function dateType($data)
+{
+	$y = substr($data,0,4);
+	$m = substr($data,5,2);
+	$d = substr($data,8,2);
+	switch($m)
+	{
+		case'01':  $month = 'Jan';break;
+		case'02':  $month = 'Feb';break;
+		case'03':  $month = 'Mar';break;
+		case'04':  $month = 'Apr';break;
+		case'05':  $month = 'May';break;
+		case'06':  $month = 'Jun';break;
+		case'07':  $month = 'Jul';break;
+		case'08':  $month = 'Aug';break;
+		case'09':  $month = 'Sep';break;
+		case'10':  $month = 'Oct';break;
+		case'11':  $month = 'Nov';break;
+		case'12':  $month = 'Dec';break;
+	}
+	return  $d.' / '.$month .' / '.$y;
+}
+----------------------------------
+function day($data)
+{
+	$d = substr($data,8,2);
+	return  $d;
+}
+function month($data)
+{
+	$m = substr($data,5,2);
+	switch($m)
+	{
+		case'01':  $month = 'Jan';break;
+		case'02':  $month = 'Feb';break;
+		case'03':  $month = 'Mar';break;
+		case'04':  $month = 'Apr';break;
+		case'05':  $month = 'May';break;
+		case'06':  $month = 'Jun';break;
+		case'07':  $month = 'Jul';break;
+		case'08':  $month = 'Aug';break;
+		case'09':  $month = 'Sep';break;
+		case'10':  $month = 'Oct';break;
+		case'11':  $month = 'Nov';break;
+		case'12':  $month = 'Dec';break;
+	}
+	return  $month;
+}
+
+----------------------------------
+function dateType($data)
+{
+	$y = substr($data,0,4);
+	$m = substr($data,5,2);
+	$d = substr($data,8,2);
+	switch($m)
+	{
+		case'01':  $month = 'January';break;
+		case'02':  $month = 'February';break;
+		case'03':  $month = 'March';break;
+		case'04':  $month = 'April';break;
+		case'05':  $month = 'May';break;
+		case'06':  $month = 'June';break;
+		case'07':  $month = 'July';break;
+		case'08':  $month = 'August';break;
+		case'09':  $month = 'September';break;
+		case'10':  $month = 'October';break;
+		case'11':  $month = 'November';break;
+		case'12':  $month = 'December';break;
+
+
+case'01':  $month = 'มกราคม';break;
+		case'02':  $month = 'กุมภาพันธ์';break;
+		case'03':  $month = 'มีนาคม';break;
+		case'04':  $month = 'เมษายน';break;
+		case'05':  $month = 'พฤษภาคม';break;
+		case'06':  $month = 'มิถุนายน';break;
+		case'07':  $month = 'กรกฎาคม';break;
+		case'08':  $month = 'สิงหาคม';break;
+		case'09':  $month = 'กันยายน';break;
+		case'10':  $month = 'ตุลาคม';break;
+		case'11':  $month = 'พฤศจิกายน';break;
+		case'12':  $month = 'ธันวาคม';break;	}
+
+case'01': $mm =  'ม.ค.';break;
+					case'02': $mm =  'ก.พ.';break;
+					case'03': $mm =  'มี.ค.';break;
+					case'04': $mm =  'เม.ย.';break;
+					case'05': $mm =  'พ.ค.';break;
+					case'06': $mm =  'มิ.ย.';break;
+					case'07': $mm =  'ก.ค.';break;
+					case'08': $mm =  'ส.ค.';break;
+					case'09': $mm =  'ก.ย.';break;
+					case'10': $mm =  'ต.ค.';break;
+					case'11': $mm =  'พ.ย.';break;
+					case'12': $mm =  'ธ.ค.';break;	
+	return  $d.' / '.$month .' / '.$y;
+}
+function check_date($date)
+{
+	$ex = explode(" ",$date);
+	$m = strtolower($ex[1]);
+	switch($m)
+	{
+		case'jan':  $month = '01';break;
+		case'feb':  $month = '02';break;
+		case'mar':  $month = '03';break;
+		case'apr':  $month = '04';break;
+		case'may':  $month = '05';break;
+		case'jun':  $month = '06';break;
+		case'jul':  $month = '07';break;
+		case'aug':  $month = '08';break;
+		case'sep':  $month = '09';break;
+		case'oct':  $month = '10';break;
+		case'nov':  $month = '11';break;
+		case'dec':  $month = '12';break;
+	}
+	$new_date = $ex[2].'-'.$month.'-'.$ex[0];
+	
+	return $new_date;
+}

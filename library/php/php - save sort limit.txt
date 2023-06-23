@@ -1,0 +1,18 @@
+if($dbc->HasRecord("photo_name_box","id='".$id."' and status=1"))
+		{
+			$dbc->Update("photo_name_box",array('#status' => '0','#updated' => 'NOW()'),"id='".$id."'");
+			echo json_encode(true);
+		}
+		else
+		{
+			if($dbc->GetCount("photo_name_box","status = 1") >= 4)
+			{
+				echo json_encode(false);
+			}
+			else
+			{
+				$dbc->Update("photo_name_box",array('#status' => '1','#updated' => 'NOW()'),"id='".$id."'");
+				echo json_encode(true);
+			}
+		}
+	

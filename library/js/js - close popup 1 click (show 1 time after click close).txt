@@ -1,0 +1,22 @@
+//alert(sessionStorage.getItem("sid"));
+	if(sessionStorage.getItem("sid") == null)
+	{
+		sessionStorage.setItem("sid", "0");
+		var sess_id = sessionStorage.getItem("sid");
+		//alert(sessionStorage.getItem("sid"));
+	}
+	else
+	{
+		//alert(sessionStorage.getItem("sid"));
+	}
+	
+
+	if(sessionStorage.getItem("sid")==0)
+	{
+		$(".box_pop,.back_pop").fadeIn(300);
+	}
+	
+    $(".b_close").click(function(e) {
+		$(".box_pop,.back_pop").fadeOut(300);
+		sessionStorage.setItem("sid", "1");
+	});

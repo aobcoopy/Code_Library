@@ -1,0 +1,13 @@
+<script src="jquery.mobile.custom.js"></script> 
+
+<script>
+
+  $(document).ready(function() {  
+  		 $(".stippp").swiperight(function() {  
+    		  $(this).carousel('prev');  
+	    		});  
+		   $(".stippp").swipeleft(function() {  
+		      $(this).carousel('next');  
+	   });  
+	});  
+</script>       

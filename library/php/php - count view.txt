@@ -1,0 +1,38 @@
+<?php 
+	$sesion_id = session_id();
+	$vi = $dbc->GetRecord("variable","*","id=4");
+	
+	$ar_data_sid = json_decode($vi['data'],true);
+	$sub_date = substr($vi['updated'],0,10);
+	if($sub_date!=date("Y-m-d"))
+	{
+		$ar_data_sid = array();
+		$datas = array(
+			"data" => json_encode($ar_data_sid,true),
+			"#updated" => 'NOW()'
+		);
+		$dbc->Update("variable",$datas,"id=4");
+	}
+	
+	if(in_array($sesion_id,$ar_data_sid))
+	{
+	}
+	else
+	{
+		if($ar_data_sid=='')
+		{
+			$ar_data_sid = array();
+		}
+		array_push($ar_data_sid,session_id());
+		//print_r($ar_data_sid);echo 'nooooooooooo---'.$ar_data_sid;
+		$newval = $vi['value']+1;
+		$datas = array(
+			"value" => $newval,
+			"data" => json_encode($ar_data_sid,true),
+			"#updated" => 'NOW()'
+		);
+		$dbc->Update("variable",$datas,"id=4");
+	}
+	
+	$vis = $dbc->GetRecord("variable","*","id=4");
+?>

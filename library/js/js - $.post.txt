@@ -1,0 +1,7 @@
+$.post("libs/xhr/action-lang.php.php", { 
+				data1: $("#txt1").val()}, 
+				//data2: $("#txt2").val(), 
+					function(result){
+						$("#div1").html(result);window.location.reload();
+					}
+				);

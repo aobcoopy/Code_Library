@@ -1,0 +1,24 @@
+<object style="display: block; margin-left: auto; margin-right: auto;" width="425" height="344" data="http://www.youtube.com/v/7scnebkm3r0&amp;fs=1&amp;border=1&amp;autoplay=1&amp;enablejsapi=1&amp;version=3" type="application/x-shockwave-flash"><param name="allowFullScreen" value="true" />
+  <param name="allowscriptaccess" value="always" />
+  <param name="allowfullscreen" value="true" />
+  <param name="src" value="http://www.youtube.com/v/7scnebkm3r0&amp;fs=1&amp;border=1&amp;autoplay=1&amp;enablejsapi=1&amp;version=3" />
+</object>
+<object id="idexists" style="display: block; margin-left: auto; margin-right: auto;" width="425" height="344" data="http://www.youtube.com/v/pDW47HNaN84&amp;fs=1&amp;border=1&amp;autoplay=1&amp;enablejsapi=1&amp;version=3" type="application/x-shockwave-flash">
+  <param name="allowscriptaccess" value="always" />
+  <param name="allowFullScreen" value="true" />
+  <param name="src" value="http://www.youtube.com/v/pDW47HNaN84&amp;fs=1&amp;border=1&amp;autoplay=1&amp;enablejsapi=1&amp;version=3" />
+</object>
+<script>
+  function pauseVideo()
+  {
+    $("object").each
+    (
+      function(index)
+      {
+        obj = $(this).get(0);
+        if (obj.pauseVideo) obj.pauseVideo();
+      }
+    );
+  }
+</script>
+<button onClick="pauseVideo();">Pause</button>

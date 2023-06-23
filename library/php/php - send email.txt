@@ -1,0 +1,41 @@
+function mailDetail($Lname,$detailsFL,$link,$picture)
+{
+return $val = "<div style=\" width:500px; height:auto;padding:10px; background:#F9F9F9; border:1px solid #CDCDCD;\">
+					
+					 <font size=\"+1\" >IHC-INTERNATIONAL HAIR LOSS CENTER</font>
+					
+				<hr>
+				 <p style=\"color:#999999; position:absolute; margin-left:0px;\">
+							Dear :".$Lname."
+				</p>
+					<div style=\"border-top:0px solid #CCC; width:480px; height:80%; background:; margin-top:5px; padding:10px;\">
+						
+						
+						<p style=\"text-indent:35px; color:#999999;\">
+							".$detailsFL."<br />
+								<center>
+									<a href=\"http://".$link."\" target=\"_blank\">".$link."</a>
+								</center>
+						</p>
+					</div>
+					<div  style=\" width:480px; height:80%; background:; margin-top:5px; padding:10px; color:#999999; font-size:11px;\">
+						ฝ่ายลูกค้าสัมพันธ์<br />
+						WEBSITE : <a href=\"http://www.ihc-hairloss.com\" target=\"_blank\">www.ihc-hairloss.com</a><br />
+						โทร Thai : 086-367-0920 , 086-367-0940 <br />
+						For English, please call : 090-907-0552
+					</div>
+				</div>
+				";
+}
+
+
+
+$mail = new MIMEMAIL("HTML"); // ส่งแบบ HTML
+							$mail->senderName = "IHC-INTERNATIONAL HAIR LOSS CENTER"; // ชื่อผู้ส่ง
+							$mail->senderMail = "ihc-hairloss@ihc.com"; // อีเมลล์ผู้ส่ง
+							$mail->bcc = "aob.redonion@gmail.com".','.$leadEmail; // ส่งแบบ bind carbon copy
+							$mail->subject = substr($detailsFL,0,10)."..."; // หัวข้ออีเมลล์
+							$mail->body = mailDetail($Lname,$detailsFL,$link,$picture);   // ข้อความ หรือ HTML ก็ได้
+							$mail->attachment[] = "path_to_file1/filename1"; // ระบุตำแหน่งไฟล์ที่จะแนบ
+							$mail->create();
+							$mail->send($leadEmail); // เมลล์ผู้รับ

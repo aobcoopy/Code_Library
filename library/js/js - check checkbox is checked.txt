@@ -1,0 +1,26 @@
+ok---------
+if($('#chk_flex').is(':checked'))
+		{
+			alert(11111);
+		}
+		else
+		{
+			alert(22222);
+		}
+ok---------
+
+
+
+
+
+
+$("#agree").click(function(e) {
+		if ($('[name="agree"]:checked').size() == 1)
+		{
+			$(".regi").removeAttr('disabled');
+		}
+		else
+		{
+			$(".regi").attr('disabled',true);
+		}
+	});

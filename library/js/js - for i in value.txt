@@ -1,0 +1,21 @@
+var i=0;
+			var z = '';
+			for (i in res.pricelist)
+			{
+				z+= '<div class="p_box col-md-4 text-center">';
+					z+= '<div class="p_box_inside col-md-12 text-center">';
+						z+= res.pricelist[i]['tx_1'];
+					z+= '</div>';
+				z+= '</div>';
+				z+= '<div class="p_box col-md-4 text-center">';
+					z+= '<div class="p_box_inside col-md-12 text-center">';
+						z+= res.pricelist[i]['tx_2'];
+					z+= '</div>';
+				z+= '</div>';
+				z+= '<div class="p_box col-md-4 text-center">';
+					z+= '<div class="p_box_inside col-md-12 text-center">';
+						z+= res.pricelist[i]['tx_3'];
+					z+= '</div>';
+				z+= '</div>';
+			}
+			$(".price_list").append(z);

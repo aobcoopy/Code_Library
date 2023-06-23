@@ -1,0 +1,9 @@
+span.uli
+{
+  padding-bottom: 3px;
+  border-bottom: 2px solid #c14952;
+}
+
+<span>How to increase the gap between text and underlining in CSS How to 
+increase the gap between text and underlining in CSS How to increase the 
+gap between text and underlining in CSS</span>

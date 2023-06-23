@@ -1,0 +1,20 @@
+$n_name = str_replace("//","/",$img['img']);
+			$xe = explode("/",$n_name);
+			//echo $n_name;
+			//$save_dir = "../../../../upload/property_backup/";
+//			if(!file_exists($save_dir))
+//			{
+//				mkdir($save_dir);
+//				
+//			}
+			$file = $xe[3];//$img['img'];
+			
+			
+			$old_sub_dir = '../../../../upload/property';
+			
+			$new_sub_dir = '../../../../upload/property_backup';
+			
+			//echo '<img src="'.$file.'"><br>';
+			//echo $file.'<br>';
+			
+			copy($old_sub_dir . '/' . $file, $new_sub_dir . '/' . $file);

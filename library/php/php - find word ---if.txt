@@ -1,0 +1,7 @@
+$myString = 'Hello, there!';
+
+if ( strstr( $myString, 'Goodbye' ) ) {
+  echo "Text found";
+} else {
+  echo "Text not found";
+}

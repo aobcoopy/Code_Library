@@ -1,0 +1,7 @@
+$ar_emp_1 = array();
+$ar_emp_2 = array();
+$ar_emp_3 = array();
+
+$ar_emp_1 = null;
+$ar_emp_2 = null;
+$ar_emp_3 = null;

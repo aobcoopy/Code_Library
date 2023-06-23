@@ -1,0 +1,25 @@
+Using Click to Chat
+
+WhatsApp's Click to Chat feature allows you to begin a chat with someone without having their phone number saved in your phone's address book. As long as you know this person’s phone number, you can create a link that will allow you to start a chat with them. By clicking the link, a chat with the person automatically opens. Click to Chat works on both your phone and WhatsApp Web.
+
+To create your own link, use https://api.whatsapp.com/send?phone= followed by the person's full phone number in international format. Omit any zeroes, brackets or dashes when adding the phone number in international format. For a detailed explanation on international numbers, read this article. Please keep in mind that this phone number must have an active account on WhatsApp.
+
+
+Use: https://api.whatsapp.com/send?phone=15551234567
+
+Don't use: https://api.whatsapp.com/send?phone=+001-(555)1234567
+
+
+To create your own link with a pre-filled message that will automatically appear in the text field of a chat, use https://api.whatsapp.com/send?phone=whatsappphonenumber&text=urlencodedtext where whatsappphonenumber is a full phone number in international format and urlencodedtext is the URL-encoded pre-filled message.
+
+
+Example: https://api.whatsapp.com/send?phone=15551234567&text=I'm%20interested%20in%20your%20car%20for%20sale
+
+
+To create a link with just a pre-filled message, use https://api.whatsapp.com/send?text=urlencodedtext
+
+
+Example: https://api.whatsapp.com/send?text=I'm%20inquiring%20about%20the%20apartment%20listing
+
+
+After clicking on the link, you will be shown a list of contacts you can send your message to.

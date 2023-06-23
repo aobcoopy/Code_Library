@@ -1,0 +1,26 @@
+function filterColumn(i,input) {
+    $('.mtb').DataTable().column(i).search(
+       $('#'+input).val()
+    ).draw();
+}
+
+//function filterGlobal_2 (i) {
+//	$('.mtb').DataTable().column(i).search(
+//        $('#tx_phone').val()
+//    ).draw();
+//}
+
+$(document).ready( function () {
+
+$('#tx_idp').on( 'keyup click', function () {
+	filterColumn(3,'tx_idp');
+});
+
+$('#tx_name').on( 'keyup click', function () {
+	filterColumn(1,'tx_name');
+});
+
+$('#tx_phone').on( 'keyup click', function () {
+	filterColumn(2,'tx_phone');
+} );
+

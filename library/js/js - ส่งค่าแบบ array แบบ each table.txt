@@ -1,0 +1,56 @@
+var data = {
+				d_Avaliable : $("#tx_date").val(),
+				d_Validate : $("#tx_valid").val(),
+				cate : $("#cate").val(),
+				Description : $("#tx_desc").val(),
+				Ship : $("#ship").val(),
+				Price : $("#tx_price").val(),
+				Pricetype : $("#tx_pt").val(),
+				Tax : $("#tx_ct").val(),
+				Quantity : $("#tx_qat").val(),
+				Quantitytype : $("#tx_qt").val(),
+				Maximun : $("#tx_max").val(),
+				Status : $("#tx_oss").val(),
+				
+				m_Title : $("#tx_meta_title").val(),
+				m_Description : $("#tx_meta_desc").val(),
+				m_Keyword : $("#tx_meta_key").val(),
+				m_Tag : $("#tx_meta_tag").val(),
+				m_SEO : $("#tx_meta_SEO").val(),
+				
+				photos : [],
+				discountTable : [],
+				rewardTable : []
+			};
+			
+			$("#thumbnail_photo .a_photo").each(function(index, element) {
+                data.photos.push({
+						s_photos : $(this).find("input[name=txtPhoto]").val()
+					});
+            });
+			
+			$("#responsiveTable tbody tr").each(function(){
+					data.discountTable.push({
+						s_group : $(this).find("select[name=s_group]").val(),
+						s_Quantity : $(this).find("input[name=tx_dis_qmt]").val(),
+						s_Price : $(this).find("input[name=tx_dis_price]").val(),
+						s_Start : $(this).find("input[name=tx_dis_start]").val(),
+						s_End : $(this).find("input[name=tx_dis_end]").val()
+					});
+				});
+				
+			$("#reward tbody tr").each(function(){
+					data.rewardTable.push({
+						r_Group : $(this).find("input[name=tx_dis_id]").val(),
+						r_Point : $(this).find("input[name=tx_dis_qmt]").val()
+					});
+				});
+			
+		$.ajax({
+				url:"apps/product/xhr/action-add-product.php",
+				type:"POST",
+				dataType:"json"	,
+				data:data,
+				success: function(response){
+				}
+		});

@@ -1,0 +1,14 @@
+$sWhere = "";
+	if ( $_REQUEST['search']['value'] != "" ){
+		$sWhere = "WHERE parent IS NOT NULL AND (";//---------where option
+		for ( $i=0 ; $i<count($aColumns) ; $i++ ){
+			$sWhere .= $aColumns[$i]." LIKE '%".$dbc->Escape_String( $_REQUEST['search']['value'] )."%' OR ";
+		}
+		$sWhere = substr_replace( $sWhere, "", -3 );
+		$sWhere .= ')';
+	}
+	else
+	{
+		$sWhere .="WHERE parent IS NOT NULL";//---------where option
+	}
+	

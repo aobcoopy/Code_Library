@@ -1,0 +1,17 @@
+﻿<a href="#" onclick="$('#formPaypal').submit()" method="post">
+                        	<img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" >
+                            <!--<a onclick="$('#formPaypal').submit()" class="btn btn-danger">Paynow</a>-->
+                        </a>    
+                        
+                             <form id="formPaypal" name="formPaypal" action="https://www.sandbox.paypal.com/cgi-bin/webscr#8221;" method="post"><!--action="https://www.paypal.com/cgi-bin/webscr#8221;"--><!--action="https://www.sandbox.paypal.com/cgi-bin/webscr#8221;"-->
+                                <input type="hidden" name="cmd" value="_ext-enter">
+                                <input type="hidden" name="redirect_cmd" value="_xclick">
+                                <input type="hidden" name="business" value="aob_405@hotmail.com"><!--email ของเรา    moolpa9@gmail.com-->
+                                <input type="hidden" name="item_name" value="Product">
+                                <input type="hidden" name="amount" value="<?php echo $ord['total'];?>">
+                                <input type="hidden" name="currency_code" value="THB">
+                                <input type="hidden" name="return" value="http://www.healthyandnicely.com/?pid=18"><!-- http://www.globish-academia.com/?pid=16&method=paypal&class=<?php //echo $_REQUEST['class'];?>-->
+                                <input type="hidden" name="cancel_return" value="http://www.healthyandnicely.com/?pid=17&class=<?php //echo $_REQUEST['class'];?>">
+                                <input type="hidden" name="invoice" value="<?php echo $ord['code'];?>"><!--รหัสการสั่งซื้อ-->
+                                <input type="hidden" name="rm" value="2"> 
+                  			</form>

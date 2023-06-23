@@ -1,0 +1,17 @@
+<script type="text/javascript" src="libs/js/lucid.js"></script>
+        <script>
+			$(window).on('load', function() {
+				$(this).impulse();
+			});
+		</script>
+
+
+<script>
+$(window).on('load', function() {
+	$(this).impulse({
+		 leap:1.55,
+		 tempo:900,
+		 constrain:'6'
+	});
+});
+</script> 

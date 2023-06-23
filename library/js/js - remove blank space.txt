@@ -1,0 +1,6 @@
+function press_space(me)
+				{
+					var str = $(me).val();
+					alert('Please fill your data');
+					$(me).val(str.replace(/\s+/g, ''));
+				}

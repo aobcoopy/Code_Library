@@ -1,0 +1,79 @@
+<div class="table-wrapper">
+    <table>
+        <thead>
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+                <th>Header 3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Text</td>
+                <td>Text</td>
+                <td>Text</td>
+            </tr>
+            <tr>
+                <td>Text</td>
+                <td>Text</td>
+                <td>Text</td>
+            </tr>
+            <tr>
+                <td>Text</td>
+                <td>Text</td>
+                <td>Text</td>
+            </tr>
+            <tr>
+                <td>Text</td>
+                <td>Text</td>
+                <td>Text</td>
+            </tr>
+            <tr>
+                <td>Text</td>
+                <td>Text</td>
+                <td>Text</td>
+            </tr>
+            <tr>
+                <td>Text</td>
+                <td>Text</td>
+                <td>Text</td>
+            </tr>
+            <tr>
+                <td>Text</td>
+                <td>Text</td>
+                <td>Text</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+/* This is what we are focused on */
+.table-wrapper{
+  overflow-y: scroll;
+  height: 150px;
+}
+
+.table-wrapper th{
+    position: sticky;
+    top: 0;
+    border: 1px solid red !important;
+}
+
+/* A bit more styling to make it look better */
+.table-wrapper{
+  background: CadetBlue;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th{
+    background: #DDD;
+}
+
+td,th{
+  padding: 10px;
+  text-align: center;
+}

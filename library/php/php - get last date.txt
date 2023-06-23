@@ -1,0 +1,4 @@
+echo $start = date("Y-m").'-01';
+echo $end = date("Y-m-t", strtotime($start));
+
+date("t");

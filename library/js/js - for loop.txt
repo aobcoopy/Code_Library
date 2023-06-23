@@ -1,0 +1,21 @@
+for(i=1;i<=26;i++)
+				{
+					var tx_val = $(me).parent().parent().find("input[name=tx_val"+i+"]").val();
+					z+= '<td><input type="text" class="form-control" id="tx_val" name="tx_val'+i+'" value="'+tx_val+'"></td>';
+				}
+
+
+
+
+-------------------------------------------------------
+<p id="demo"></p>
+
+<script>
+var txt = "";
+var person = {fname:"John", lname:"Doe", age:25}; 
+var x;
+for (x in person) {
+  txt += person[x] + " ";
+}
+document.getElementById("demo").innerHTML = txt;
+</script>

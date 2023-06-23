@@ -1,0 +1,8 @@
+<script>
+$(document).ready(function(e) {
+	$(".tum").click(function(e) {
+       var src = $(this).attr('src');
+		$(".cover").attr('src',src);
+    });	
+});
+</script>

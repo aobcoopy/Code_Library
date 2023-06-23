@@ -1,0 +1,15 @@
+RewriteRule ^search-([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)/([^/]*)\.html$ /?page=$1&des=$2&sub=$3&pri=$4&room=$5&view=$6 [L]
+
+
+RewriteRule ^search-rent/(.*)  ?page=forrent&des=all&sub=all&pri=1&room=all&cate=0&sort=all [L]
+
+https://www.inspiringvillas.com/?page=forrent&des=all&sub=all&pri=1&room=all&cate=0&sort=all
+
+https://www.inspiringvillas.com/search-rent/  
+ RewriteRule ^search-rent/(.*)  index.php?query=$1
+
+https://www.inspiringvillas.com/search-rent/0/1/2.html
+
+
+https://www.inspiringvillas.com/search-rent/
+thailand-phuket/ao-makham-bay/all-price/5-7-bedrooms/wedding-villas/all-sort.html

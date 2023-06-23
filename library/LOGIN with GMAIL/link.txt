@@ -1,0 +1,50 @@
+https://developers.google.com/identity/sign-in/web/sign-in
+https://console.developers.google.com/apis/credentials?project=inspiringvillasweb
+
+
+
+<div id="my-signin2" style="display: inherit;margin-top:15px;" ></div>
+
+<meta name="google-signin-client_id" content="589883918007-q11adbahcm7s8no0ug3au5q4686ern46.apps.googleusercontent.com">
+<script>
+function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+	   var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	  
+	  $("#txt_name").val(profile.getName());
+	  $("#txt_Email").val(profile.getEmail());
+	  $("#txt_photo").val(profile.getImageUrl());
+	  $("#face_img").attr('src',profile.getImageUrl());
+	  $(".bsends").removeClass('hidden');
+	  
+	  $(".disision").hide();
+	  $(".sec_box").show();
+	  //$("#myModal_review").modal('hide');
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 267,
+        'height': 38,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+	
+function signOut() {
+	var auth2 = gapi.auth2.getAuthInstance();
+	auth2.signOut().then(function () {
+		console.log('User signed out.');
+	});
+}
+</script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>

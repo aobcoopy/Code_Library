@@ -1,0 +1,6 @@
+function lower_text(str)
+{
+	var text = $(str).val();
+	var res = text.toLowerCase();
+	$(str).val(res);
+}

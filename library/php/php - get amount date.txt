@@ -1,0 +1,4 @@
+$thisMount = date("m");
+			$thisYear = date("Y");
+			$dmount = date("Y-m");
+			$d=cal_days_in_month(CAL_GREGORIAN,$thisMount,$thisYear);

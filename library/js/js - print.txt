@@ -1,0 +1,22 @@
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+	
+
+     document.body.innerHTML = printContents;
+     window.print();
+	 window.getComputedStyle();
+
+     document.body.innerHTML = originalContents;
+	
+}
+<style>
+ body
+   {
+        -webkit-print-color-adjust:exact; font-family:Arial, sans-serif;
+   }
+    #ad{ display:none;}
+  #leftbar{ display:none;}
+  #contentarea{ width:100%;}
+</style>
+

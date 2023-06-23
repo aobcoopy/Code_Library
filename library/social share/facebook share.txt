@@ -1,0 +1,75 @@
+<!-------facebook------------>             
+        
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Loader" type="text/javascript"></script>
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script> 
+<meta property="og:image" content="http://www.healthyandnicely.com/<?php echo $line['pr_picture'];?>" />       
+        <script>
+		function onShare(idp,image,title,desc)
+		{ 
+			 window.fbAsyncInit = function() {
+				FB.init({
+				  appId      : '848627301857922',
+				  xfbml      : true,
+				  version    : 'v2.3'
+				});
+			  };
+			
+			  (function(d, s, id){
+				 var js, fjs = d.getElementsByTagName(s)[0];
+				 if (d.getElementById(id)) {return;}
+				 js = d.createElement(s); js.id = id;
+				 js.src = "//connect.facebook.net/en_US/sdk.js";
+				 fjs.parentNode.insertBefore(js, fjs);
+			   }(document, 'script', 'facebook-jssdk'));
+			   
+			   
+			   
+			  // FB.ui({
+//				  method: 'share_open_graph',
+//				  action_type: 'og.likes',
+//				  title:title,
+//				  display: 'popup',
+//				  action_properties: JSON.stringify({
+//					  object:'http://www.healthyandnicely.com/?pid=14&pro='+idp,
+//					  image:'http://www.healthyandnicely.com'+image,
+//					   app_id:'848627301857922',
+//					  
+//				  })
+//				}, function(response){});
+
+			FB.ui({
+ 			  method: 'feed',
+			  name: title,
+			  link: 'http://www.healthyandnicely.com/?pid=14&pro='+idp,
+			  caption: title,
+			  display: 'popup',
+			  description: desc+'...',
+			  picture:'http://www.healthyandnicely.com'+image,
+			}, function(response){});
+			
+			
+			//FB.ui({
+//			  method: 'share',
+//			  href: 'http://www.healthyandnicely.com/?pid=14&pro='+idp,
+//			  picture: image,
+//			  display: 'popup',
+//			}, function(response){});
+		}
+		
+		</script>
+        <?php $desc = substr($line['pr_details'],2,500);?> 
+        <button class="btn btn-primary" data-layout="button_count" onclick="onShare('<?php echo $_REQUEST['pro'];?>','<?php echo $line['pr_picture'];?>','<?php echo $line['pr_name'];?>','<?php echo $desc;?>')">
+        	<img src="../../upload/facebook.png" width="15" /> share</button>
+        
+              <hr />
+              
+   <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v2.3&appId=848627301857922";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>           
+              
+  <!-------facebook------------>            

@@ -1,0 +1,12 @@
+setcookie( "cookie_name", "amplysoft", time()+3600, "/");
+    echo "cookie = ".$_COOKIE['cookie_name'];
+     
+    echo "<br/>";
+     
+    unset( $_COOKIE['cookie_name'] );
+    echo "cookie = ".$_COOKIE['cookie_name'];
+
+º≈≈—æ∏Ï
+
+cookie = amplysoft
+cookie =

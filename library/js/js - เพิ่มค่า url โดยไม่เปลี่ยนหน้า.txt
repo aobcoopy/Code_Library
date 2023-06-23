@@ -1,0 +1,21 @@
+ประกาศ
+function pop_detail(slug)
+{
+window.location.hash = slug;
+}
+
+
+
+เรียกใช้งาน
+var hash = window.location.hash;
+//alert(hash);
+	if(hash=='')
+	{
+		//alert(slug);
+	}
+	else
+	{
+		var newhash = hash.replace("#","");
+		$(".btnn-"+newhash).click();
+		
+	}

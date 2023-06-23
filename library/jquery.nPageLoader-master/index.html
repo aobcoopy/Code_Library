@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0"/>
+	<title>jquery.nPageLoader.js</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	</style>
+	<script src="js/jquery-1.10.1.js"></script>
+	<script src="js/jquery.nPageLoader.js"></script>
+	<script>
+		var pageLoader = $.nPageLoader;
+		pageLoader.init({
+			// url
+			url : "http://interlink.polardevgroup.com/libs/image/our_group/ourgroup_BG.png",
+			//  kb
+			urlSize : 28.6,
+			//  kb
+			size : 155,
+			// console log
+			log : true
+		});
+		pageLoader.addEventListener( "progress", onProgress );
+		pageLoader.addEventListener( "complete", onComplete );
+		
+		function onProgress( e ){
+			$("#pageLoader_status").html(e.percent + "%");
+			$("#pageLoader_bar").width(e.percent + "%");
+		}
+		
+		function onComplete( e ){
+			$("#pageLoader_status").html(e.event);
+			$("#pageLoader_bar").css("background-color","blue");
+		}
+	</script>
+</head>
+<body>
+	<h1 id="pageLoader_status"></h1>
+	<div id="pageLoader_bar" style="width:0%; height:100px; background-color:red;"></div>
+</body>
+</html>

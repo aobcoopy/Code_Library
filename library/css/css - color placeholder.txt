@@ -1,0 +1,4 @@
+.emailsub::placeholder
+{
+	color:#fff !important;
+}

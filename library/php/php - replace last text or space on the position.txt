@@ -1,0 +1,9 @@
+echo stripos("I love php, I love php too!"," ")."<br>";
+echo strripos("Villa on the Rocks ,Phuket"," ")."<br>";
+echo strrpos("Villa on the Rocks ,Phuket"," ")."<br>";
+echo substr_replace("Villa on the Rocks ,Phuket",",",18);
+
+1
+18
+18
+Villa on the Rocks,

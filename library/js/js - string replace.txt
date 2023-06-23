@@ -1,0 +1,7 @@
+ var str = "How are you doing today?";
+    var res = str.replace("How","Hey");
+    document.getElementById("demo").innerHTML = res;
+
+
+var res = str.replaceAll(",","");
+	var fin = res.replaceAll(" ","-");

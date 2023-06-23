@@ -1,0 +1,4 @@
+if($(me).prop("type")=='text')
+		{
+			$(me).parent().find('.txnoti').html(show);
+		}

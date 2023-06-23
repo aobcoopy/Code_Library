@@ -1,0 +1,38 @@
+<script>
+
+        //DOM loaded 
+        $(document).ready(function() {
+            
+            //attach click event to button
+            $('.button').click(function(){
+                
+                //when button is clicked we call blurElement function
+                blurElement("body", 10);
+
+            });
+
+            //attach click event to button
+            $('.button2').click(function(){
+
+                //set box blur to 0
+                blurElement(".boxx", 0);
+
+            });
+
+           
+        });
+
+        //set the css3 blur to an element
+        function blurElement(element, size){
+            var filterVal = 'blur('+size+'px)';
+            $(element)
+              .css('filter',filterVal)
+              .css('webkitFilter',filterVal)
+              .css('mozFilter',filterVal)
+              .css('oFilter',filterVal)
+              .css('msFilter',filterVal);
+        }
+
+       
+
+    </script>

@@ -1,0 +1,8 @@
+$("#find").click(function(){
+		var link = "?pid=3&search="+$('#txtSearch').val();
+		window.location=link;
+	});
+
+------
+new tab
+window.open('../villaformadmin-'+vname+'-'+encode+'.html', '_blank');

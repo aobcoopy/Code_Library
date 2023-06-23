@@ -1,0 +1,105 @@
+$strTo = $to.",aobcoopy@gmail.com";
+				$strHeader = "Content-type: text/html; charset=UTF-8\r\n"; // or UTF-8 //
+				$strHeader .= "From: info@yoko.com";
+				$strSubject = "หมายเลขคำสั่งซื้อ ".$code;
+				$strMessage = "<div style=\"padding:10px; background:#F9F9F9; border:1px solid #CDCDCD;width:600px\">";
+						$strMessage .= "<div style=\" height: 99px;border-bottom: 1px solid #ccc;\">
+							<div style=\"width:100px; padding:15px;float:left;\"><img src=\"http://yoko.polardevgroup.com/images/icons/logo.png\" width=\"100\" /></div>
+							<div style=\"font-size: 26px;width:450px;float:right;margin-top: 29px;font-family: sans-serif;color: #969696;text-align: right;\">ใบวางบิล</div>
+						</div>
+						
+					
+						<div   style=\"border-top:0px solid #CCC;  background:; margin-top:5px; padding:10px;\">
+							<div style=\"color:#999999;font-size:16px;\">
+							   <br><br>
+							   
+								<center>";
+									$strMessage .= "หมายเลขคำสั่งซื้อ ".$code."
+									<p class=\"mtop20\">จำนวนเงินที่ต้องชำระ</p>
+									<p class=\"pink\">
+										<h2 style=\"color: #f284b3;\">".number_format($net_price,2)." บาท</h2>
+									</p>
+									
+								</center>
+								<hr>
+								<div class=\"col-xs-12\" style=\"border-bottom:1px solid #999; padding-bottom:20px;\">
+									<p class=\"mtop20\"><h3 style=\"color: #f284b3;\">วิธีการชำระเงิน</h3></p>
+									สำหรับลูกค้าท่านที่ทำรายการสั่งซื้อสินค้าแล้ว  สามารถโอนเงินตามจำนวนที่สั่งซื้อสินค้าได้ทันที<br>
+								</div>
+							   
+							   
+								<div class=\"col-xs-12\" style=\"border-bottom:1px solid #999; padding-bottom:20px;margin-bottom:20px;\">
+									<p class=\"mtop20\" ><h3 style=\"color: #f284b3;\">วิธีการแจ้งชำระเงิน</h3></p>
+									1.แจ้งชำระผ่าน line โดยสามารถแอด line ได้โดยพิมพ์ ID หรือยิง QR Code ได้ที่ฝั่งซ้ายของ website (สะดวกและรวดเร็วสุด)<br>
+									2.แจ้งชำระได้ที่เบอร์ 081-111-1111  (xxx)</br>
+									3.แจ้งชำระ facebook panpage</br>
+									4.แจ้งชำระผ่านทางหน้าเว็บไซค์
+									</br> </br> <span style=\"font-size:12px;\">***สินค้าจะจัดส่ง ภายหลังจากที่ท่านชำระเงิน และแจ้งการชำระเงินแล้วเท่านั้นค่ะ</span>
+								</div>
+								<h3 style=\"color: #f284b3;\">ชำระผ่านช่องทางธนาคาร</h3>
+					
+							   <table class=\"table tme website\">
+									<thead>
+										<tr bgcolor=\"#eaeaea\">
+											<td>ธนาคาร</td>
+											<td>เลขที่บัญชี</td>
+											<td>สาขา</td>
+											<td>ประเภทบัญชี</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><img src=\"http://yoko.polardevgroup.com/images/ตรากสิกร.png\" width=\"30\" class=\"pi\" />  กสิกรไทย</td>
+											<td>259-108-772-2</td>
+											<td>ถนนเทพารักษ์</td>
+											<td>กระแสรายวัน</td>
+										</tr>
+										<tr>
+											<td><img src=\"http://yoko.polardevgroup.com/images/ตรากรุงเทพ.png\" width=\"30\" class=\"pi\" />  กรุงเทพ </td>
+											<td>122-7-39262-6</td>
+											<td>สำโรง</td>
+											<td>ออมทรัพย์</td>
+										</tr>
+										<tr>
+											<td><img src=\"http://yoko.polardevgroup.com/images/ตราไทยพาณิชย์.png\" width=\"30\" class=\"pi\" />  ไทยพาณิชย์ </td>
+											<td>343-2-32469-6</td>
+											<td>ปู่เจ้าสมิงพราย</td>
+											<td>ออมทรัพย์</td>
+										</tr>
+										<tr>
+											<td><img src=\"http://yoko.polardevgroup.com/images/ตรากรุงศรี.png\" width=\"30\" class=\"pi\" />  กรุงศรี </td>
+											<td>063-1-70388-6</td>
+											<td>สำโรง</td>
+											<td>ออมทรัพย์</td>
+										</tr>
+									</tbody>
+								</table>
+								<br>
+								<center>ชื่อบัญชี บริษัท สยามโยโกะ จำกัด </center>
+					
+							</div>
+							
+							<p style=\"text-indent:35px; color:#999999; margin-left:20px;\">
+							</p>
+							
+						</div>
+						<div    style=\" background:; margin-top:5px; padding:10px; color:#999999; font-size:11px;\">
+							<b>Contact Us</b><hr />
+							WEBSITE : <a href=\"http://www.yoko.com/\" target=\"_blank\">www.yoko.com/</a><br />
+							Email : info@yoko.com<br>
+							
+						</div>
+					</div>";
+					
+					
+				
+				$flgSend = @mail($strTo,$strSubject,$strMessage,$strHeader);  // @ = No Show Error //
+				if($flgSend)
+				{
+					//echo "Email Sending.";
+				}
+				else
+				{
+					//echo "Email Can Not Send.";
+				}
+	

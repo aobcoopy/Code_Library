@@ -1,0 +1,6 @@
+<script defer src="<?php echo $url_link;?>libs/js/lazyload.js"></script>
+<img class="lazy" data-src="/upload/category/photo_1503739883.jpg" />
+
+$(document).ready(function(e) {
+    $(".lazy").lazyload();
+});
