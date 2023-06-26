@@ -1,0 +1,2 @@
+ถ้าเป็น async script จะ execute เมื่อถูกโหลดเสร็จ ดังนั้นจึงมีการ block parser ในจังหวะที่ execute
+ถ้าเป็น defer script จะ execute หลัง HTML parser ทำเสร็จ ดังนั้นวิธีนี้จะไม่เกิดการ block HTML parser เลย
