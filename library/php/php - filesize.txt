@@ -1,1 +1,5 @@
 number_format((filesize("../../".$row['location']."")/1024)/1024,2).' MB';
+
+-------------------
+$fsize = filesize("./".$file."");
+					$filesize = number_format((($fsize/1024)/1024),2).' MB';
