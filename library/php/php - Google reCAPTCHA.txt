@@ -1,0 +1,35 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer>
+</script>
+
+<div class="g-recaptcha" data-sitekey="6LfbCgMoAAAAAJuvaQcWL7Jea8A_502Gsybir8y9"></div>
+
+
+//----------------------------------- action
+
+
+
+$secret = "6LfbCgMoAAAAACNdyVkKNrHdFFsZr3-GF2HxSp9l";
+	if(isset($_POST['g-recaptcha-response']))
+	{
+		$captcha = $_POST['g-recaptcha-response'];
+		$verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$captcha);
+		$responseData = json_decode($verifyResponse);
+		
+		if(!$captcha)
+		{
+			echo json_encode(
+				array(
+					'status' => false,
+					'msg' => 'Please check reCAPTCHA'
+				)
+			);
+		}
+		else
+		{
+			if($responseData->success)
+			{
+			}
+		}
+	}

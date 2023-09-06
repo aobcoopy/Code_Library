@@ -1,3 +1,12 @@
 $path = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
     $path .=$_SERVER["SERVER_NAME"].''. dirname($_SERVER["PHP_SELF"]).'/';
-	$url_link = $path;
+	$url_link = $path; => http://127.0.0.1\/
+
+
+
+
+
+$_SERVER["SERVER_NAME"] => 127.0.0.1
+$_SERVER["PHP_SELF"] => /index.php
+$_SERVER['REQUEST_URI'] => /
+$_SERVER['HTTP_HOST'] => 127.0.0.1:8015
