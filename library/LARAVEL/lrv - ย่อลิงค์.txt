@@ -1,0 +1,8 @@
+web.php
+		link						ตั้งชื่อให้ใหม่เพื่อเรียกใช้งาน
+Route::get('/about/123456789',[AboutController::class,'index'])->name('about');
+
+
+about.blade.php
+		เรียกผ่านชื่อแทน
+<a href="{{route('about')}}">About</a>

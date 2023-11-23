@@ -10,7 +10,7 @@ if($('#chk_flex').is(':checked'))
 ok---------
 
 
-
+if($(v_score).prop("checked") == true)
 
 
 

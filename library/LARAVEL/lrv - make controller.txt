@@ -1,0 +1,2 @@
+php artisan make:controller ชื่อที่ต้องการตั้ง
+php artisan make:controller AdminController

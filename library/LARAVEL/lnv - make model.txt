@@ -1,0 +1,2 @@
+php artisan make:model ชื่อ -สร้างไฟล์ migration
+php artisan make:model Blog -m
