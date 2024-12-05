@@ -1,0 +1,37 @@
+Microsoft Windows [Version 10.0.22621.3880]
+(c) Microsoft Corporation. All rights reserved.
+
+
+
+C:\Users\aob_4>D:
+
+D:\>line themes
+'line' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\>cd linethemes
+The system cannot find the path specified.
+
+D:\>LINE THEMES
+'LINE' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\>\LINE THEMES
+'\LINE' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\>cd LINE THEMES
+
+D:\LINE THEMES>cd พญานาค
+
+D:\LINE THEMES\พญานาค>cd final
+
+D:\LINE THEMES\พญานาค\final>ren *.png.png *.png
+
+D:\LINE THEMES\พญานาค\final>ren *.png.png *.png
+
+D:\LINE THEMES\พญานาค\final>ren *.png *.
+
+D:\LINE THEMES\พญานาค\final>ren *. *.png
+
+D:\LINE THEMES\พญานาค\final>

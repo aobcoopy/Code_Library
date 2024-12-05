@@ -1,0 +1,1 @@
+<input placeholder="01-01-2021" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />

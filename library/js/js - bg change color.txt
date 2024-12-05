@@ -1,0 +1,37 @@
+<script>
+$(document).ready(function(e) {
+    var bg_1 = $('.bg_2');
+    bg_1.css({'opacity':'0'}); // better use CSS
+
+    $(window).scroll(function () {
+		var st = $(this).scrollTop();
+		bg_1.css({'opacity':(st*.003)});
+    });
+
+});
+</script>
+
+<div class="bg_1"></div>
+<div class="bg_2"></div>
+
+css--------------------
+.bg_1
+{
+	background-image: linear-gradient(to right top, #ffcae8, #f6cef1, #ecd3f8, #e3d8fd, #dadcff, #d0e1ff, #c9e5ff, #c3e9ff, #b9efff, #b1f5ff, #aafaff, #a7fff9);
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index: -2;
+}
+.bg_2
+{
+	background-image: linear-gradient(to right top, #cff8ff, #dbf8ff, #e7f9ff, #f1f9ff, #f9fbff, #f5f6ff, #f4f1fe, #f5ebfb, #f4daf3, #f8c8e4, #fcb5d0, #ffa3b6);
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index: -1;
+}

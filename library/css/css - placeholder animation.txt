@@ -1,0 +1,32 @@
+.bedcon
+{
+	position:absolute;
+	left:0;
+	transition:0.3s all;
+	transform-origin: 0 0;
+}
+
+textarea#tx_bconf:focus + label.bedcon , .tx_bconf:not(:placeholder-shown) + label ,
+.tx_overlay:focus + label.bedcon, .tx_overlay:not(:placeholder-shown) + label
+{
+	transform:translateY(-0.5em) scale(0.8);
+	margin-left:15px;
+	background:#fff;
+	padding:0px 15px;
+	font-weight:bold;
+	
+}
+textarea#tx_bconf::placeholder, .tx_overlay::placeholder
+{
+	color:transparent;
+}
+
+
+-------------------------------------------
+
+<div class="rela">
+                
+                <textarea name="tx_BREAKFAST" id="tx_BREAKFAST" cols="30" rows="5" class="txt_line tx_overlay" placeholder=" " style="width:100%"><?php echo ($sprq!='')?$sprq:'-';?></textarea>
+                <label for="tx_BREAKFAST" class="bedcon">Special Request</label>
+
+            </div>

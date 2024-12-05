@@ -9,3 +9,32 @@ function visitto(key,posi)
 <div class="indiv col-md-12" id="key<?php echo $row2['id'];?>" onMouseOver="brinkcolormini(this,'<?php echo $row2['color_code'];?>')" onClick="visitto('key<?php echo $row2['id'];?>','posi<?php echo $row2['id'];?>')">
         	<img src="<?php echo $row2['icon'];?>" width="40" title="<?php echo $row2['name'];?>">
        </div><?php
+
+
+
+-----------------------------------
+
+function goto_review()
+{
+	var testDiv = document.getElementById("pos_my_reviews");
+	var testDiv_2 = $(".pos_my_reviews_2").offset().top;
+	if($(window).width()<976)
+	{
+		var re_top = testDiv.offsetTop+210;
+  		window.scrollTo(0, re_top);
+	}
+	else
+	{
+		var re_top = testDiv.offsetTop+310;
+		window.scrollTo(0, re_top);
+	}
+	setTimeout(function(){
+		setTimeout(function(){
+			$(".pos_my_reviews").css({"background": "#ffb0b0"});
+		},500);	
+		setTimeout(function(){
+			$(".pos_my_reviews").css({"background": ""});
+		},2000);	
+	},1000);
+	//alert($(".recently_web").height()+'---'+re_hi);
+}

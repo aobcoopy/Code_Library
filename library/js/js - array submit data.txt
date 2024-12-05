@@ -30,3 +30,5 @@ var data = {
 						s_photos : $(this).find("input[name=txtPhoto]").val()
 					});
             });
+
+
