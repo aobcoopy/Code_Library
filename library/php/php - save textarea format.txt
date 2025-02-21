@@ -2,3 +2,10 @@ nl2br($_REQUEST['tx_ac']),
 
 css
 <p style="white-space:pre-warp">
+
+
+encode
+nl2br(base64_encode($_REQUEST['tx_E_reason'])),
+
+decode
+nl2br(base64_decode($data['reason'],true))

@@ -1,0 +1,11 @@
+ select.nobor
+    {
+    	border-radius:0;
+    	background: #efefef;
+    	border-color: #efefef;
+    	appearance: none;
+    	-webkit-appearance: none;
+    	-moz-appearance: none;
+    	padding: 10px 5px !important;
+    	margin: 0;
+    }

@@ -1,0 +1,9 @@
+{
+	"success":true,"code":200,"message":"OK",
+	"data":{
+        "user":{"id":111526,"username":"webteam","firstname":"webteam","lastname":"inspiringvillas","mobile":"66633545593","priority":3,"email":"webteam@inspiringvillas.com","last_login":null},
+        "wallet":{"credit":"93.00","balance":"70.00"}
+    }
+}
+
+echo $obj->data->wallet->credit;

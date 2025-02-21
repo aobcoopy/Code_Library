@@ -1,0 +1,10 @@
+//---- SMS ------
+					$ex_New_name = explode(' ',$fullname);
+					$phoneNO_1 = $dbc->GetRecord("variable","*","name='smsphone'");
+					$phoneNO = $phoneNO_1['value'];
+					$text = "New Enquiry: ".$ex_New_name[0]." VILLA : ".$villa_name."  CHECKIN : ".$in." BR : ".$_REQUEST['no_bed_mo']." EMAIL : ".$strTo." PHONE : ".$phone_no." ";
+					// LINK : https://www.inspiringvillas.com/back/?app=booking
+					$sms_token = $dbc->GetRecord("variable","*","name='sms_token'");
+					$api_token = $sms_token['value'];
+					sendSMS($phoneNO,$text,$api_token);
+					//---- SMS ------
